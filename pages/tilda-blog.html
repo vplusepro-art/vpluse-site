@@ -23,7 +23,7 @@ window.VPX_CONFIG = {
     articleAusn: 'https://tenchat.ru/media/4766203-ausn--ne-vklyuchil-i-zabyl-vot-gde-chasche-vsego-lovyat-syurprizy',
 
     // НУЖНО НАСТРОИТЬ: отдельные страницы ещё не созданы
-    consent: null,            // страница «Согласие на обработку ПДн» (пока ведёт на политику)
+    consent: 'https://vpluse.pro/consent', // страница «Согласие на обработку ПДн»
     cookies: null,            // настройки cookies (пока скрыто на сайте)
     allServices: null,        // «Все услуги»
     serviceOutsourcing: null, // «Бухгалтерский аутсорсинг — Подробнее»
@@ -40,10 +40,10 @@ window.VPX_CONFIG = {
   form: {
     // Селектор штатной формы Tilda на этой же странице, например '#rec123456789'.
     // Пока null — заявка НЕ отправляется, пользователь видит честное сообщение и телефон.
-    tildaFormSelector: null,
+    tildaFormSelector: '#rec4672756001',
     hideTildaBlock: true,
     // Имена переменных полей в форме Tilda (вкладка «Контент» блока формы → поле «Имя переменной»)
-    fields: { name: 'Name', phone: 'Phone', email: 'Email', service: 'Service', comment: 'Comment', consent: 'Consent' }
+    fields: { name: 'Name', phone: 'Phone', email: 'Email', service: 'Service', comment: 'Комментарий', consent: 'Consent' }
   }
 };
 
@@ -52,7 +52,10 @@ window.VPX_CONFIG = {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Blog", "@id": "https://vpluse.pro/blog#blog", "name": "Блог ВПЛЮСЕ", "url": "https://vpluse.pro/blog", "description": "Практические статьи для ООО и ИП: требования ФНС, возражения на акт налоговой проверки, АУСН, налог на прибыль, проверка базы 1С. Сроки, нормы НК РФ и примеры из практики ВПЛЮСЕ.", "inLanguage": "ru-RU", "publisher": {"@type": "Organization", "@id": "https://vpluse.pro/#org", "name": "ВПЛЮСЕ", "url": "https://vpluse.pro/", "logo": {"@type": "ImageObject", "url": "https://vpluse.pro/favicon.svg"}}, "blogPost": [{"@type": "BlogPosting", "headline": "Пришло требование из налоговой: что делать и в какие сроки отвечать", "url": "https://vpluse.pro/blog-trebovanie-fns", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Электронная транспортная накладная с 1 сентября 2026: кому обязательна и где теряют вычеты", "url": "https://vpluse.pro/blog-etrn-2026", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "НДС на упрощёнке: какая ставка выгоднее — 5% или 22%", "url": "https://vpluse.pro/blog-nds-usn-5-ili-22", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Бухгалтер пропал: как восстановить бухгалтерский учёт, даже если нет базы", "url": "https://vpluse.pro/blog-vosstanovlenie-ucheta", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Патент в 2026–2027 годах: лимит 20 и 15 млн ₽ и как не потерять право задним числом", "url": "https://vpluse.pro/blog-patent-limit-2026", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Налоги для селлеров маркетплейсов в 2026 году: УСН, НДС и частые ошибки", "url": "https://vpluse.pro/blog-nalogi-marketplace", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Сколько стоит бухгалтерское обслуживание ИП и ООО в 2026 году", "url": "https://vpluse.pro/blog-stoimost-buhgalterii", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Налоговые проверки в 2026 году: экстерриториальность, отраслевые инспекторы и автоматическая сверка данных", "url": "https://vpluse.pro/blog-nalogovye-proverki-2026", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "АУСН: «включил и забыл» не работает. Где чаще всего ловят сюрпризы", "url": "https://vpluse.pro/blog-ausn", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Безналичная оплата без чека: почему это становится реально опасно", "url": "https://vpluse.pro/blog-beznal-bez-cheka", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Штрафы за нулевую отчётность отменены: что это значит и что сдавать всё равно нужно", "url": "https://vpluse.pro/blog-shtraf-nulevaya-otchetnost", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Возражения на акт налоговой проверки: сроки, структура и аргументы", "url": "https://vpluse.pro/blog-vozrazheniya-na-akt", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Проверка базы 1С: когда она нужна и что в ней смотрят", "url": "https://vpluse.pro/blog-proverka-bazy-1c", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Годовая декларация по налогу на прибыль: что проверить до сдачи", "url": "https://vpluse.pro/blog-nalog-na-pribyl-deklaraciya", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Бухгалтерия транспортной компании: путевые листы, ГСМ, НДС и налоговые риски", "url": "https://vpluse.pro/blog-buhgalteriya-gruzoperevozki", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Бухгалтерия строительной компании: учёт по объектам, КС-2, субподряд и НДС", "url": "https://vpluse.pro/blog-buhgalteriya-stroitelstvo", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Бухгалтерия производственной компании: себестоимость, нормы и прямые расходы", "url": "https://vpluse.pro/blog-buhgalteriya-proizvodstvo", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Бухгалтерия оптовой компании: запасы, бонусы поставщиков, НДС и маркировка", "url": "https://vpluse.pro/blog-buhgalteriya-optovaya-torgovlya", "datePublished": "2026-10-10"}, {"@type": "BlogPosting", "headline": "Бухгалтерия в сфере услуг: выбор режима, акты, самозанятые исполнители и кассы", "url": "https://vpluse.pro/blog-buhgalteriya-sfera-uslug", "datePublished": "2026-10-10"}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://vpluse.pro/"}, {"@type": "ListItem", "position": 2, "name": "Блог"}]}]}</script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/vpx.min.css">
+<link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/vpx.min.css">
 <div class="vpx" id="vpx-root">
 <svg class="vpx-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
 <symbol id="vpxi-arrow" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
@@ -161,7 +164,7 @@ window.VPX_CONFIG = {
 <div class="vpx-filters vpx-rise" role="group" aria-label="Рубрики"><button type="button" class="vpx-filter is-on" data-vpx-filter="" aria-pressed="true">Все темы</button><button type="button" class="vpx-filter" data-vpx-filter="Проверки и требования ФНС" aria-pressed="false">Проверки и требования ФНС</button><button type="button" class="vpx-filter" data-vpx-filter="Налоги и режимы" aria-pressed="false">Налоги и режимы</button><button type="button" class="vpx-filter" data-vpx-filter="Учёт, 1С и стоимость" aria-pressed="false">Учёт, 1С и стоимость</button><button type="button" class="vpx-filter" data-vpx-filter="Отрасли" aria-pressed="false">Отрасли</button></div>
 <div class="vpx-blog__grid" id="vpx-blog-grid">
 <article class="vpx-card vpx-bpost" data-tag="Проверки и требования ФНС">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-trebovanie-fns" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-trebovanie-fns-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-trebovanie-fns" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-trebovanie-fns-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Требования ФНС</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 7 мин</span></div>
 <h3><a href="/blog-trebovanie-fns">Пришло требование из налоговой: что делать и в какие сроки отвечать</a></h3>
@@ -169,7 +172,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-trebovanie-fns">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Отрасли">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-etrn-2026" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-etrn-2026-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-etrn-2026" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-etrn-2026-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">ЭТрН</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 7 мин</span></div>
 <h3><a href="/blog-etrn-2026">Электронная транспортная накладная с 1 сентября 2026: кому обязательна и где теряют вычеты</a></h3>
@@ -177,7 +180,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-etrn-2026">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Налоги и режимы">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-nds-usn-5-ili-22" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-nds-usn-5-ili-22-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-nds-usn-5-ili-22" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-nds-usn-5-ili-22-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">НДС на УСН</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 7 мин</span></div>
 <h3><a href="/blog-nds-usn-5-ili-22">НДС на упрощёнке: какая ставка выгоднее — 5% или 22%</a></h3>
@@ -185,7 +188,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-nds-usn-5-ili-22">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Учёт, 1С и стоимость">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-vosstanovlenie-ucheta" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-vosstanovlenie-ucheta-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-vosstanovlenie-ucheta" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-vosstanovlenie-ucheta-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Восстановление учёта</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 7 мин</span></div>
 <h3><a href="/blog-vosstanovlenie-ucheta">Бухгалтер пропал: как восстановить бухгалтерский учёт, даже если нет базы</a></h3>
@@ -193,7 +196,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-vosstanovlenie-ucheta">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Налоги и режимы">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-patent-limit-2026" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-patent-limit-2026-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-patent-limit-2026" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-patent-limit-2026-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Патент</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 6 мин</span></div>
 <h3><a href="/blog-patent-limit-2026">Патент в 2026–2027 годах: лимит 20 и 15 млн ₽ и как не потерять право задним числом</a></h3>
@@ -201,7 +204,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-patent-limit-2026">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Отрасли">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-nalogi-marketplace" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-nalogi-marketplace-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-nalogi-marketplace" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-nalogi-marketplace-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Маркетплейсы</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 7 мин</span></div>
 <h3><a href="/blog-nalogi-marketplace">Налоги для селлеров маркетплейсов в 2026 году: УСН, НДС и частые ошибки</a></h3>
@@ -209,7 +212,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-nalogi-marketplace">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Учёт, 1С и стоимость">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-stoimost-buhgalterii" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-stoimost-buhgalterii-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-stoimost-buhgalterii" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-stoimost-buhgalterii-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Цены</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 6 мин</span></div>
 <h3><a href="/blog-stoimost-buhgalterii">Сколько стоит бухгалтерское обслуживание ИП и ООО в 2026 году</a></h3>
@@ -217,7 +220,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-stoimost-buhgalterii">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Проверки и требования ФНС">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-nalogovye-proverki-2026" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-nalogovye-proverki-2026-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-nalogovye-proverki-2026" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-nalogovye-proverki-2026-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Проверки 2026</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 6 мин</span></div>
 <h3><a href="/blog-nalogovye-proverki-2026">Налоговые проверки в 2026 году: экстерриториальность, отраслевые инспекторы и автоматическая сверка данных</a></h3>
@@ -225,7 +228,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-nalogovye-proverki-2026">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Налоги и режимы">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-ausn" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-ausn-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-ausn" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-ausn-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">АУСН</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 8 мин</span></div>
 <h3><a href="/blog-ausn">АУСН: «включил и забыл» не работает. Где чаще всего ловят сюрпризы</a></h3>
@@ -233,7 +236,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-ausn">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Налоги и режимы">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-beznal-bez-cheka" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-beznal-bez-cheka-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-beznal-bez-cheka" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-beznal-bez-cheka-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Онлайн-кассы</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 6 мин</span></div>
 <h3><a href="/blog-beznal-bez-cheka">Безналичная оплата без чека: почему это становится реально опасно</a></h3>
@@ -241,7 +244,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-beznal-bez-cheka">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Налоги и режимы">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-shtraf-nulevaya-otchetnost" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-shtraf-nulevaya-otchetnost-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-shtraf-nulevaya-otchetnost" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-shtraf-nulevaya-otchetnost-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Отчётность</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 4 мин</span></div>
 <h3><a href="/blog-shtraf-nulevaya-otchetnost">Штрафы за нулевую отчётность отменены: что это значит и что сдавать всё равно нужно</a></h3>
@@ -249,7 +252,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-shtraf-nulevaya-otchetnost">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Проверки и требования ФНС">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-vozrazheniya-na-akt" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-vozrazheniya-na-akt-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-vozrazheniya-na-akt" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-vozrazheniya-na-akt-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Налоговые проверки</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 8 мин</span></div>
 <h3><a href="/blog-vozrazheniya-na-akt">Возражения на акт налоговой проверки: сроки, структура и аргументы</a></h3>
@@ -257,7 +260,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-vozrazheniya-na-akt">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Учёт, 1С и стоимость">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-proverka-bazy-1c" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-proverka-bazy-1c-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-proverka-bazy-1c" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-proverka-bazy-1c-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Аудит базы 1С</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 6 мин</span></div>
 <h3><a href="/blog-proverka-bazy-1c">Проверка базы 1С: когда она нужна и что в ней смотрят</a></h3>
@@ -265,7 +268,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-proverka-bazy-1c">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Налоги и режимы">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-nalog-na-pribyl-deklaraciya" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-nalog-na-pribyl-deklaraciya-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-nalog-na-pribyl-deklaraciya" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-nalog-na-pribyl-deklaraciya-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Налог на прибыль</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 6 мин</span></div>
 <h3><a href="/blog-nalog-na-pribyl-deklaraciya">Годовая декларация по налогу на прибыль: что проверить до сдачи</a></h3>
@@ -273,7 +276,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-nalog-na-pribyl-deklaraciya">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Отрасли">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-buhgalteriya-gruzoperevozki" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-buhgalteriya-gruzoperevozki-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-buhgalteriya-gruzoperevozki" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-buhgalteriya-gruzoperevozki-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Грузоперевозки</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 6 мин</span></div>
 <h3><a href="/blog-buhgalteriya-gruzoperevozki">Бухгалтерия транспортной компании: путевые листы, ГСМ, НДС и налоговые риски</a></h3>
@@ -281,7 +284,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-buhgalteriya-gruzoperevozki">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Отрасли">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-buhgalteriya-stroitelstvo" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-buhgalteriya-stroitelstvo-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-buhgalteriya-stroitelstvo" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-buhgalteriya-stroitelstvo-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Строительство</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 6 мин</span></div>
 <h3><a href="/blog-buhgalteriya-stroitelstvo">Бухгалтерия строительной компании: учёт по объектам, КС-2, субподряд и НДС</a></h3>
@@ -289,7 +292,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-buhgalteriya-stroitelstvo">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Отрасли">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-buhgalteriya-proizvodstvo" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-buhgalteriya-proizvodstvo-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-buhgalteriya-proizvodstvo" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-buhgalteriya-proizvodstvo-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Производство</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 6 мин</span></div>
 <h3><a href="/blog-buhgalteriya-proizvodstvo">Бухгалтерия производственной компании: себестоимость, нормы и прямые расходы</a></h3>
@@ -297,7 +300,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-buhgalteriya-proizvodstvo">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Отрасли">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-buhgalteriya-optovaya-torgovlya" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-buhgalteriya-optovaya-torgovlya-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-buhgalteriya-optovaya-torgovlya" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-buhgalteriya-optovaya-torgovlya-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Оптовая торговля</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 6 мин</span></div>
 <h3><a href="/blog-buhgalteriya-optovaya-torgovlya">Бухгалтерия оптовой компании: запасы, бонусы поставщиков, НДС и маркировка</a></h3>
@@ -305,7 +308,7 @@ window.VPX_CONFIG = {
 <a class="vpx-link" href="/blog-buhgalteriya-optovaya-torgovlya">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
 </div>
 </article><article class="vpx-card vpx-bpost" data-tag="Отрасли">
-<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-buhgalteriya-sfera-uslug" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/blog/blog-buhgalteriya-sfera-uslug-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-buhgalteriya-sfera-uslug" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/blog/blog-buhgalteriya-sfera-uslug-480.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
 <div class="vpx-bpost__body">
 <div class="vpx-post__meta"><span class="vpx-chip">Сфера услуг</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 6 мин</span></div>
 <h3><a href="/blog-buhgalteriya-sfera-uslug">Бухгалтерия в сфере услуг: выбор режима, акты, самозанятые исполнители и кассы</a></h3>
@@ -406,4 +409,4 @@ window.VPX_CONFIG = {
 </div>
 </footer>
 </div>
-<script src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@fc6bf7ec3dd5bc38a7d0796eba74292139b702d9/assets/vpx.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@1f726c255ea33e66680e164215aa674072ee6a29/assets/vpx.min.js"></script>
