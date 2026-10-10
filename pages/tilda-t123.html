@@ -1,0 +1,1060 @@
+<!-- ВПЛЮСЕ — главная страница. Блок T123 «HTML-код». Вставлять целиком, один блок на страницу. -->
+<script>
+/* ===================== НАСТРОЙКИ ВПЛЮСЕ (CONFIG) =====================
+   Здесь подключаются ссылки и форма. null = ссылка ещё не настроена:
+   тогда кнопка ведёт на честный запасной вариант (форму заявки, раздел
+   на странице или помечается «скоро»). URL не выдумывать — только реальные.
+   ===================================================================== */
+window.VPX_CONFIG = {
+  links: {
+    // Подтверждённые адреса
+    robot: 'https://robot.vpluse.pro/',
+    privacy: 'https://vpluse.pro/privacy',
+    vk: 'https://vk.com/vpluse_proo',
+    tenchat: 'https://tenchat.ru/ploskonos_pro',
+    maxChat: 'https://max.ru/u/f9LHodD0cOJXxzWG144QE45wxOlygsudlw94ywq6AL1rII-v63MSTto3ao8', // «Написать в MAX» (8 993 900-04-05)
+    maxChannel: 'https://max.ru/id362804736954_biz',   // канал «Вплюсе — Всё о налогах и бухгалтерии для бизнеса»
+    webinar: 'https://rutube.ru/video/f166681bcbcd0a0deb0aaadc3f5ec149/',
+    articleAusn: 'https://tenchat.ru/media/4766203-ausn--ne-vklyuchil-i-zabyl-vot-gde-chasche-vsego-lovyat-syurprizy',
+
+    // НУЖНО НАСТРОИТЬ: отдельные страницы ещё не созданы
+    consent: null,            // страница «Согласие на обработку ПДн» (пока ведёт на политику)
+    cookies: null,            // настройки cookies (пока скрыто на сайте)
+    allServices: null,        // «Все услуги»
+    serviceOutsourcing: null, // «Бухгалтерский аутсорсинг — Подробнее»
+    serviceAudit: null,       // «Налоговый аудит — Подробнее»
+    serviceDisputes: null,    // «Налоговые проверки и споры — Подробнее»
+    service1c: null,          // «Аудит базы 1С — Подробнее»
+    case1: null, case2: null, case3: null, case4: null, // «Смотреть кейс» (пока открывают панель кейса)
+    industries: null,         // «Посмотреть отраслевые решения» (пока открывают панели «Подробнее»)
+    founder: null,            // «Подробнее об основателе и методологии»
+  },
+  // Номер счётчика Яндекс Метрики (как в Tilda → Настройки сайта → Аналитика), например 12345678.
+  // Цели: vpx_lead (заявка отправлена), vpx_cta (кнопка «Обсудить задачу»), vpx_phone, vpx_email, vpx_max.
+  metrika: null,
+  form: {
+    // Селектор штатной формы Tilda на этой же странице, например '#rec123456789'.
+    // Пока null — заявка НЕ отправляется, пользователь видит честное сообщение и телефон.
+    tildaFormSelector: null,
+    hideTildaBlock: true,
+    // Имена переменных полей в форме Tilda (вкладка «Контент» блока формы → поле «Имя переменной»)
+    fields: { name: 'Name', phone: 'Phone', email: 'Email', service: 'Service', comment: 'Comment', consent: 'Consent' }
+  }
+};
+
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://vpluse.pro/#org", "name": "ВПЛЮСЕ", "alternateName": "VPLUSE", "url": "https://vpluse.pro/", "logo": "https://vpluse.pro/favicon.svg", "telephone": ["+7-977-339-12-03", "+7-993-900-04-05"], "email": "ipploskonos@mail.ru", "founder": {"@type": "Person", "name": "Юлия Плосконос"}, "sameAs": ["https://vk.com/vpluse_proo", "https://tenchat.ru/ploskonos_pro", "https://max.ru/id362804736954_biz"]}, {"@type": ["AccountingService", "ProfessionalService"], "@id": "https://vpluse.pro/#service", "name": "ВПЛЮСЕ — бухгалтерские услуги", "url": "https://vpluse.pro/", "telephone": "+7-977-339-12-03", "email": "ipploskonos@mail.ru", "priceRange": "от 5 000 ₽", "parentOrganization": {"@id": "https://vpluse.pro/#org"}, "address": {"@type": "PostalAddress", "addressLocality": "Мытищи", "addressRegion": "Московская область", "streetAddress": "ул. Борисовка, д. 8", "addressCountry": "RU"}, "areaServed": [{"@type": "City", "name": "Москва"}, {"@type": "City", "name": "Мытищи"}, {"@type": "Country", "name": "Россия"}], "description": "Бухгалтерский аутсорсинг для ООО и ИП, налоговый аудит и консультации, ответы на требования ФНС, проверка базы 1С. Москва, Мытищи, работа по России.", "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Услуги и цены ВПЛЮСЕ", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Бухгалтерский аутсорсинг для ИП", "provider": {"@id": "https://vpluse.pro/#service"}, "description": "Командное бухгалтерское сопровождение ИП на ОСНО, УСН и патенте."}, "priceSpecification": {"@type": "UnitPriceSpecification", "minPrice": 5000, "priceCurrency": "RUB", "unitText": "месяц", "unitCode": "MON"}, "priceCurrency": "RUB"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Бухгалтерский аутсорсинг для ООО и ИП с сотрудниками", "provider": {"@id": "https://vpluse.pro/#service"}, "description": "Бухгалтерский, налоговый и кадровый учёт, первичные документы, банк, регистры и декларации."}, "priceSpecification": {"@type": "UnitPriceSpecification", "minPrice": 10000, "priceCurrency": "RUB", "unitText": "месяц", "unitCode": "MON"}, "priceCurrency": "RUB"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Консультация по налоговому вопросу без анализа документов", "provider": {"@id": "https://vpluse.pro/#service"}}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 5000, "priceCurrency": "RUB"}, "priceCurrency": "RUB"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Консультация по налоговому вопросу с анализом документов", "provider": {"@id": "https://vpluse.pro/#service"}}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 15000, "priceCurrency": "RUB"}, "priceCurrency": "RUB"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Налоговый аудит", "provider": {"@id": "https://vpluse.pro/#service"}, "description": "Проверка бухгалтерской и налоговой базы, НДС, налога на прибыль, первичных документов и регистров."}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 40000, "priceCurrency": "RUB"}, "priceCurrency": "RUB"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ответ на требование ФНС", "provider": {"@id": "https://vpluse.pro/#service"}}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 10000, "priceCurrency": "RUB"}, "priceCurrency": "RUB"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Возражения на акт налоговой проверки", "provider": {"@id": "https://vpluse.pro/#service"}}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 30000, "priceCurrency": "RUB"}, "priceCurrency": "RUB"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Сопровождение налоговой проверки и спора", "provider": {"@id": "https://vpluse.pro/#service"}, "description": "Анализ актов и решений ФНС, возражения, апелляционные жалобы, доказательственная база, налоговая реконструкция."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Экспресс-проверка базы 1С", "provider": {"@id": "https://vpluse.pro/#service"}}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 15000, "priceCurrency": "RUB"}, "priceCurrency": "RUB"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Полная проверка базы 1С", "provider": {"@id": "https://vpluse.pro/#service"}}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 30000, "priceCurrency": "RUB"}, "priceCurrency": "RUB"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Комплексная проверка базы 1С с планом исправлений", "provider": {"@id": "https://vpluse.pro/#service"}}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 70000, "priceCurrency": "RUB"}, "priceCurrency": "RUB"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Восстановление бухгалтерского учёта", "provider": {"@id": "https://vpluse.pro/#service"}}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Кадровый учёт в составе сопровождения", "provider": {"@id": "https://vpluse.pro/#service"}}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Регистрация и изменения в бизнесе", "provider": {"@id": "https://vpluse.pro/#service"}, "description": "Регистрация ООО и ИП, изменения в ЕГРЮЛ и ЕГРИП, купля-продажа долей, ликвидация нулевых компаний."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Отраслевые решения: грузоперевозки, строительство, производство, оптовая торговля, маркетплейсы, услуги", "provider": {"@id": "https://vpluse.pro/#service"}}}]}}, {"@type": "WebSite", "@id": "https://vpluse.pro/#website", "url": "https://vpluse.pro/", "name": "ВПЛЮСЕ", "inLanguage": "ru-RU", "publisher": {"@id": "https://vpluse.pro/#org"}}, {"@type": "WebPage", "@id": "https://vpluse.pro/#webpage", "url": "https://vpluse.pro/", "name": "Бухгалтерские услуги в Москве и Мытищах — ВПЛЮСЕ", "description": "Бухгалтерский аутсорсинг для ООО и ИП, налоговый аудит и консультации, ответы на требования ФНС, проверка базы 1С. Москва, Мытищи, работа по России.", "inLanguage": "ru-RU", "isPartOf": {"@id": "https://vpluse.pro/#website"}, "about": {"@id": "https://vpluse.pro/#service"}}, {"@type": "FAQPage", "@id": "https://vpluse.pro/#faq", "mainEntity": [{"@type": "Question", "name": "С чего начинается работа?", "acceptedAnswer": {"@type": "Answer", "text": "С созвона: обсуждаем задачу, оцениваем объём проблемы и предварительную стоимость. Затем собираем необходимые документы и приступаем к работе."}}, {"@type": "Question", "name": "Работаете ли вы с небольшими ООО и ИП?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Ограничений по минимальному обороту и размеру бизнеса нет. Формат сопровождения подбираем после обсуждения задачи."}}, {"@type": "Question", "name": "Какие системы налогообложения вы сопровождаете?", "acceptedAnswer": {"@type": "Answer", "text": "Работаем с ОСНО, УСН «доходы», УСН «доходы минус расходы» и патентом в применимых ситуациях."}}, {"@type": "Question", "name": "Сколько стоит бухгалтерское сопровождение?", "acceptedAnswer": {"@type": "Answer", "text": "Ведение ИП — от 5 000 ₽ в месяц, ИП с сотрудниками и ООО — от 10 000 ₽ в месяц. Точную стоимость называем после обсуждения объёма операций и задач."}}, {"@type": "Question", "name": "Можно ли обратиться с одним налоговым вопросом?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Консультация без анализа документов стоит 5 000 ₽, с анализом документов — 15 000 ₽. Если нужен отдельный проект, обсуждаем его состав и стоимость."}}, {"@type": "Question", "name": "Пришло требование ФНС — что передать для оценки?", "acceptedAnswer": {"@type": "Answer", "text": "Само требование, сведения о его получении и документы по запрошенным операциям. После первичного разбора определяем, какие дополнительные данные нужны. Ответ на одно требование — от 10 000 ₽."}}, {"@type": "Question", "name": "Можно ли начать срочно?", "acceptedAnswer": {"@type": "Answer", "text": "В отдельных ситуациях можем начать срочную работу. На созвоне уточняем ближайший срок, доступность документов и приоритетную задачу."}}, {"@type": "Question", "name": "Что входит в налоговый аудит?", "acceptedAnswer": {"@type": "Answer", "text": "Проверка согласованных участков налогового учёта, первичных документов, расчётов, регистров и деклараций. Состав проверки зависит от задачи. Стоимость — от 40 000 ₽."}}, {"@type": "Question", "name": "Чем проверка базы 1С отличается от налогового аудита?", "acceptedAnswer": {"@type": "Answer", "text": "Проверка 1С сосредоточена на документах, остатках, взаиморасчётах, регистрах и логике отражения операций в базе. Налоговый аудит оценивает корректность налогового учёта и связанные риски. При необходимости работы объединяются."}}, {"@type": "Question", "name": "Можно ли заказать кадровый учёт отдельно?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, кадровый учёт мы ведём только вместе с бухгалтерским сопровождением."}}, {"@type": "Question", "name": "Работаете ли вы с клиентами из других регионов?", "acceptedAnswer": {"@type": "Answer", "text": "Да, работаем дистанционно с клиентами по всей России. Офис — в Мытищах, рядом с Москвой."}}]}]}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/vpx.min.css">
+<div class="vpx" id="vpx-root">
+<svg class="vpx-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="vpxi-arrow" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+<symbol id="vpxi-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+<symbol id="vpxi-check" viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 6.5"/></symbol>
+<symbol id="vpxi-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+<symbol id="vpxi-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></symbol>
+<symbol id="vpxi-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+<symbol id="vpxi-phone" viewBox="0 0 24 24"><path d="M6 3.5h3.2L11 8l-2.2 1.8a13 13 0 0 0 5.4 5.4L16 13l4.5 1.8V18a2 2 0 0 1-2.1 2C11 19.5 4.5 13 4 6.1A2 2 0 0 1 6 3.5z"/></symbol>
+<symbol id="vpxi-phone-fill" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></symbol>
+<symbol id="vpxi-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.2"/><path d="M4 7l8 6 8-6"/></symbol>
+<symbol id="vpxi-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.6 7-11.6A7 7 0 0 0 5 9.4C5 14.4 12 21 12 21z"/><circle cx="12" cy="9.4" r="2.4"/></symbol>
+<symbol id="vpxi-send" viewBox="0 0 24 24"><path d="M21 3L3 10.5l7 2.7L20.5 4z"/><path d="M10 13.2l-.8 6.8 3.4-3.6"/><path d="M10 13.2L21 3"/></symbol>
+<symbol id="vpxi-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.4"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+<symbol id="vpxi-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><circle cx="17.5" cy="8.5" r="2.6"/><path d="M15 14.2c2.6.3 4.5 2.5 4.5 5.8"/></symbol>
+<symbol id="vpxi-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="vpxi-doc" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5V8h4"/><path d="M9.5 12h6M9.5 15h6M9.5 18h4"/></symbol>
+<symbol id="vpxi-doc-check" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5V8h4"/><path d="M9.5 14l2 2 3.5-3.8"/></symbol>
+<symbol id="vpxi-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.8-4.8"/></symbol>
+<symbol id="vpxi-scale" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M12 6L5 8.5l3.5 6L12 6zM12 6l7 2.5-3.5 6L12 6z"/></symbol>
+<symbol id="vpxi-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13"/><path d="M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/></symbol>
+<symbol id="vpxi-bars" viewBox="0 0 24 24"><path d="M4 20V13M9.3 20V9M14.6 20V11M20 20V5M2.5 20.5h19"/></symbol>
+<symbol id="vpxi-trend-down" viewBox="0 0 24 24"><path d="M4 7l6 6 4-4 6 7"/><path d="M14 16h6v-6"/></symbol>
+<symbol id="vpxi-alert" viewBox="0 0 24 24"><path d="M12 3.5l9.5 16.5H2.5L12 3.5z"/><path d="M12 10v4.2M12 17.3v.1"/></symbol>
+<symbol id="vpxi-cloud" viewBox="0 0 24 24"><path d="M7 18.5h10.5a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.5 10a4.25 4.25 0 0 0 .5 8.5z"/><path d="M9.5 14l2 2 3.5-3.5"/></symbol>
+<symbol id="vpxi-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></symbol>
+<symbol id="vpxi-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.6L19.5 10.5l-5.6 1.9L12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></symbol>
+<symbol id="vpxi-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.66 0l3.17-3.17a4 4 0 0 0-5.66-5.66L12 6.34"/><path d="M14 10a4 4 0 0 0-5.66 0l-3.17 3.17a4 4 0 0 0 5.66 5.66L12 17.66"/></symbol>
+<symbol id="vpxi-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="vpxi-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+<symbol id="vpxi-split" viewBox="0 0 24 24"><path d="M12 21v-7M12 14L6 8M12 14l6-6M3.5 3.5h5v5M20.5 3.5h-5v5"/></symbol>
+<symbol id="vpxi-calc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11.5h2M12 11.5h2M8 15h2M12 15h2M8 18.5h2M12 18.5h2M16 11.5v7"/></symbol>
+<symbol id="vpxi-briefcase" viewBox="0 0 24 24"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M8.5 7.5V5.8A1.8 1.8 0 0 1 10.3 4h3.4a1.8 1.8 0 0 1 1.8 1.8v1.7"/><path d="M3 13h18"/></symbol>
+<symbol id="vpxi-boxes" viewBox="0 0 24 24"><path d="M3 11h8v9H3zM13 11h8v9h-8zM8 3h8v8H8z"/><path d="M6 11v3M17 11v3M12 3v3"/></symbol>
+<symbol id="vpxi-truck" viewBox="0 0 24 24"><path d="M2.5 6h11v10h-11zM13.5 9.5h4l3.5 3.5V16h-7.5"/><circle cx="6.5" cy="17.5" r="2"/><circle cx="17" cy="17.5" r="2"/></symbol>
+<symbol id="vpxi-building" viewBox="0 0 24 24"><path d="M5 21V6l7-3 7 3v15"/><path d="M5 21h14M9 10h1.2M9 14h1.2M13.8 10H15M13.8 14H15M10 21v-4h4v4"/></symbol>
+<symbol id="vpxi-factory" viewBox="0 0 24 24"><path d="M3 21V11l5 3v-3l5 3V8l6 3.5V21z"/><path d="M3 21h18"/><path d="M15 8V5h3v2.5"/></symbol>
+<symbol id="vpxi-cart" viewBox="0 0 24 24"><path d="M3 4h2.5l2.2 11h10.6L20.5 7.5H6.4"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></symbol>
+<symbol id="vpxi-store" viewBox="0 0 24 24"><path d="M4 9.5V19a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9.5"/><path d="M3 4h18l1.5 5.5H1.5L3 4z"/><path d="M9 20v-5.5h6V20"/></symbol>
+<symbol id="vpxi-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.5L7 21l5-2.5 5 2.5-1.5-7.5"/></symbol>
+<symbol id="vpxi-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></symbol>
+<symbol id="vpxi-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></symbol>
+<symbol id="vpxi-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol>
+<symbol id="vpxi-tg" viewBox="0 0 24 24"><path d="M21 4L2.8 11.2c-.9.4-.9 1.2 0 1.5l4.6 1.4 1.8 5.4c.2.7.9.8 1.4.3l2.5-2.4 4.8 3.5c.7.4 1.3.2 1.5-.7L22.4 5c.3-1.1-.4-1.6-1.4-1z" stroke-linejoin="round"/><path d="M7.4 14.1L18 7l-8.3 8.3"/></symbol>
+<symbol id="vpxi-vk" viewBox="0 0 24 24"><path d="M3.5 6.5h3.2c.3 3.6 1.9 6.4 3.5 7V6.5h3v4c1.5-.2 3.1-2 3.6-4H20c-.4 2.3-2.2 4.2-3.5 5 1.3.6 3.4 2.3 4 5.5h-3.3c-.6-1.9-2.2-3.4-4.2-3.6v3.6h-.5C6.8 17 3.7 13 3.5 6.5z"/></symbol>
+<symbol id="vpxi-wa" viewBox="0 0 24 24"><path d="M4 20l1.2-4.1A8.5 8.5 0 1 1 8.4 19z"/><path d="M9 8.5c.2-.6.6-.7 1-.6l.9 2-.6.9c.5 1 1.4 1.9 2.4 2.4l.9-.6 2 .9c.1.4 0 .8-.6 1-2.6 1-6.9-3.3-6-6z"/></symbol>
+<symbol id="vpxi-max" viewBox="0 0 24 24"><path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.3 20.7l4.4-1.1A8.8 8.8 0 1 0 12 3.2z"/><path d="M8.6 14.6V9.4l3.4 3.2 3.4-3.2v5.2"/></symbol>
+<symbol id="vpxi-play" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.3v5.4l4.6-2.7z"/></symbol>
+<symbol id="vpxi-tc" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M8 8.5h8M12 8.5V17"/></symbol>
+<symbol id="vpxi-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.2 2"/></symbol>
+<symbol id="vpxi-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="vpxi-id" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.8 16c.5-1.6 1.6-2.4 2.7-2.4s2.2.8 2.7 2.4M14 10h4.5M14 13.5h3"/></symbol>
+</svg>
+<a class="vpx-skip" href="#vpx-main">Перейти к содержанию</a>
+<header class="vpx-header" id="vpx-header">
+<div class="vpx-wrap vpx-header__row">
+<a class="vpx-logo" href="#vpx-top" aria-label="ВПЛЮСЕ — бухгалтерские услуги, в начало страницы">
+<img class="vpx-limg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1000" height="282" alt="Логотип ВПЛЮСЕ — бухгалтерские услуги">
+</a>
+<nav class="vpx-nav" aria-label="Основное меню">
+<a href="#services">Услуги</a>
+<a href="#cases">Кейсы</a>
+<a href="#about">О компании</a>
+<a href="#materials">Блог</a>
+<a href="#robot">ВПЛЮСЕ РОБОТ</a>
+<a href="#contacts">Контакты</a>
+</nav>
+<div class="vpx-header__right">
+<a class="vpx-phone" href="tel:+79773391203"><svg class="vpx-ic"><use href="#vpxi-phone-fill"/></svg>8 (977) 339-12-03</a>
+<a class="vpx-phone-ic" href="tel:+79773391203" aria-label="Позвонить: 8 (977) 339-12-03"><svg class="vpx-ic"><use href="#vpxi-phone"/></svg></a>
+<a class="vpx-btn vpx-btn--primary vpx-btn--sm" href="#contact" data-vpx-cta>Обсудить задачу</a>
+<button class="vpx-burger" type="button" id="vpx-burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="vpx-drawer"><svg class="vpx-ic"><use href="#vpxi-menu"/></svg></button>
+</div>
+</div>
+</header>
+<div class="vpx-drawer" id="vpx-drawer" aria-hidden="true">
+<div class="vpx-drawer__panel" role="dialog" aria-modal="true" aria-label="Меню сайта" tabindex="-1">
+<div class="vpx-drawer__top">
+<img class="vpx-limg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1000" height="282" alt="ВПЛЮСЕ">
+<button class="vpx-drawer__close" type="button" id="vpx-drawer-close" aria-label="Закрыть меню"><svg class="vpx-ic"><use href="#vpxi-close"/></svg></button>
+</div>
+<nav aria-label="Меню (мобильное)">
+<a href="#services">Услуги<svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+<a href="#cases">Кейсы<svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+<a href="#about">О компании<svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+<a href="#materials">Блог<svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+<a href="#robot">ВПЛЮСЕ РОБОТ<svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+<a href="#faq">Частые вопросы<svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+<a href="#contacts">Контакты<svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</nav>
+<a class="vpx-phone" href="tel:+79773391203"><svg class="vpx-ic"><use href="#vpxi-phone-fill"/></svg>8 (977) 339-12-03</a>
+<a class="vpx-phone" href="tel:+79939000405"><svg class="vpx-ic"><use href="#vpxi-phone-fill"/></svg>8 (993) 900-04-05</a>
+<a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</div>
+</div>
+<main id="vpx-main">
+<section class="vpx-hero" id="vpx-top" aria-labelledby="vpx-h1">
+<div class="vpx-hero__visual">
+<div class="vpx-scene">
+<div class="vpx-device vpx-device--hero" data-vpx-device data-w="1744" data-h="901" data-quad="1022,274 1554,243 1525,632 976,609" data-sw="640" data-sh="440">
+<picture class="vpx-device__img">
+<img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/hero-scene.webp" width="1744" height="901" alt="Ноутбук с системой контроля бухгалтерского учёта ВПЛЮСЕ в светлом офисе" fetchpriority="high" decoding="async">
+</picture>
+<div class="vpx-device__stage" aria-hidden="true">
+<div class="vpx-screen">
+<div class="vpx-s">
+<div class="vpx-s__side">
+<div class="vpx-s__logo"><img class="vpx-limg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1000" height="282" alt=""></div>
+<div class="vpx-s__item is-on"><svg class="vpx-ic"><use href="#vpxi-home"/></svg>Главная</div>
+<div class="vpx-s__item"><svg class="vpx-ic"><use href="#vpxi-bars"/></svg>Показатели</div>
+<div class="vpx-s__item"><svg class="vpx-ic"><use href="#vpxi-doc"/></svg>Документы</div>
+<div class="vpx-s__item"><svg class="vpx-ic"><use href="#vpxi-calc"/></svg>Налоги</div>
+<div class="vpx-s__item"><svg class="vpx-ic"><use href="#vpxi-search"/></svg>Проверки</div>
+<div class="vpx-s__item"><svg class="vpx-ic"><use href="#vpxi-gear"/></svg>Настройки</div>
+</div>
+<div class="vpx-s__main">
+<div class="vpx-s__top"><div class="vpx-s__search"><svg class="vpx-ic"><use href="#vpxi-search"/></svg>Поиск по разделам…</div><div class="vpx-s__dot"><svg class="vpx-ic"><use href="#vpxi-bell"/></svg></div></div>
+<div class="vpx-s__card">
+<div class="vpx-s__title">Контроль учёта</div>
+<div class="vpx-s__chart">
+<i style="height:38%;animation-delay:.6s"></i><i style="height:55%;animation-delay:.66s"></i><i style="height:30%;animation-delay:.72s"></i><i style="height:62%;animation-delay:.78s"></i><i style="height:48%;animation-delay:.84s"></i><i style="height:70%;animation-delay:.9s"></i><i style="height:58%;animation-delay:.96s"></i><i style="height:76%;animation-delay:1.02s"></i><i style="height:64%;animation-delay:1.08s"></i><i style="height:84%;animation-delay:1.14s"></i><i style="height:52%;animation-delay:1.2s"></i><i style="height:94%;animation-delay:1.26s"></i>
+</div>
+<div class="vpx-s__months"><span>Янв</span><span>Фев</span><span>Мар</span><span>Апр</span><span>Май</span><span>Июн</span><span>Июл</span><span>Авг</span><span>Сен</span><span>Окт</span><span>Ноя</span><span>Дек</span></div>
+</div>
+<div class="vpx-s__kpis">
+<div class="vpx-s__kpi"><span>Документы</span><b><i><svg class="vpx-ic"><use href="#vpxi-check"/></svg></i>Сверены</b></div>
+<div class="vpx-s__kpi"><span>Расчёты</span><b><i><svg class="vpx-ic"><use href="#vpxi-check"/></svg></i>Проверены</b></div>
+<div class="vpx-s__kpi is-accent"><span>Налоговые риски</span><b><i><svg class="vpx-ic"><use href="#vpxi-check"/></svg></i>Под контролем</b></div>
+</div>
+</div>
+</div>
+<div class="vpx-scan"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<canvas class="vpx-hero__canvas" aria-hidden="true"></canvas>
+<div class="vpx-wrap vpx-hero__inner">
+<div class="vpx-hero__copy">
+<p class="vpx-eyebrow vpx-hero__eyebrow">Бухгалтерские услуги в Москве и Мытищах</p>
+<h1 class="vpx-h1" id="vpx-h1"><span class="vpx-h1__a">Бухгалтерия</span><span class="vpx-h1__b">под контролем</span></h1>
+<p class="vpx-hero__sub">Бухгалтерский аутсорсинг, налоговый аудит и консультации, ответы на требования ФНС и сопровождение налоговых споров. Ведём учёт и разбираем сложные ситуации до уровня конкретных документов и операций.</p>
+<div class="vpx-hero__cta">
+<a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+<a class="vpx-btn vpx-btn--outline" href="#cases">Смотреть кейсы</a>
+</div>
+<ul class="vpx-facts" aria-label="Коротко о компании">
+<li class="vpx-fact"><span class="vpx-fact__ic"><svg class="vpx-ic"><use href="#vpxi-shield"/></svg></span><p>В профессии <small>с 2005 года</small></p></li>
+<li class="vpx-fact"><span class="vpx-fact__ic"><svg class="vpx-ic"><use href="#vpxi-users"/></svg></span><p>Команда <small>профессиональных бухгалтеров</small></p></li>
+<li class="vpx-fact"><span class="vpx-fact__ic"><svg class="vpx-ic"><use href="#vpxi-bars"/></svg></span><p>Собственная технология <small>контроля</small></p></li>
+</ul>
+</div>
+<div class="vpx-hero__aside">
+<p class="vpx-hero__note" aria-hidden="true">Вникаем<br>в ваш бизнес
+<svg class="vpx-swoosh" viewBox="0 0 120 14"><path d="M3 10C30 2 80 1 117 6"/></svg>
+</p>
+<ul class="vpx-adv" aria-label="Наши принципы">
+<li><svg class="vpx-ic"><use href="#vpxi-eye"/></svg><div><b>Прозрачный учёт</b><span>Сопоставляем цифры, документы и платежи</span></div></li>
+<li><svg class="vpx-ic"><use href="#vpxi-shield"/></svg><div><b>Налоговые риски под контролем</b><span>Проверяем спорные операции и налоговые расчёты</span></div></li>
+<li><svg class="vpx-ic"><use href="#vpxi-users"/></svg><div><b>Командное сопровождение</b><span>Бухгалтерские задачи ведёт команда</span></div></li>
+<li><svg class="vpx-ic"><use href="#vpxi-bars"/></svg><div><b>Подтверждённая практика</b><span>Реальные кейсы с понятным контекстом результата</span></div></li>
+</ul>
+</div>
+</div>
+</section>
+<section class="vpx-sec" id="services" aria-labelledby="vpx-services-h">
+<div class="vpx-wrap">
+<div class="vpx-head vpx-rise">
+<div class="vpx-head__text">
+<h2 class="vpx-h2" id="vpx-services-h">Ключевые направления</h2>
+<p class="vpx-lead">От текущего учёта до сложных налоговых ситуаций — для ООО и ИП.</p>
+</div>
+<a class="vpx-link" href="#d-services" data-vpx-link="allServices" data-vpx-fallback="detail:d-services">Все услуги и цены <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</div>
+<div class="vpx-services">
+<article class="vpx-card vpx-svc vpx-rise" id="svc-outsourcing">
+<div class="vpx-svc__ic"><svg class="vpx-ic"><use href="#vpxi-doc"/></svg></div>
+<h3>Бухгалтерский аутсорсинг</h3>
+<p>Командное бухгалтерское сопровождение ООО и ИП на ОСНО, УСН и патенте. Ведём бухгалтерский, налоговый и кадровый учёт, работаем с первичными документами, банком, регистрами и декларациями.</p>
+<p class="vpx-price">ИП — от&nbsp;5&nbsp;000&nbsp;₽/мес<br>ООО — от&nbsp;10&nbsp;000&nbsp;₽/мес</p>
+<a class="vpx-link" href="#d-outsourcing" data-vpx-link="serviceOutsourcing" data-vpx-fallback="detail:d-outsourcing" aria-label="Подробнее: бухгалтерский аутсорсинг">Подробнее <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</article>
+<article class="vpx-card vpx-svc vpx-rise" id="svc-audit">
+<div class="vpx-svc__ic"><svg class="vpx-ic"><use href="#vpxi-bars"/></svg></div>
+<h3>Налоговый аудит и консультации</h3>
+<p>Проверяем бухгалтерскую и налоговую базу, НДС, налог на прибыль, первичные документы и регистры. Консультируем по налоговым вопросам, разбираем конкретные операции и выявляем риски.</p>
+<p class="vpx-price">Консультация — от&nbsp;5&nbsp;000&nbsp;₽<br>Аудит — от&nbsp;40&nbsp;000&nbsp;₽</p>
+<a class="vpx-link" href="#d-audit" data-vpx-link="serviceAudit" data-vpx-fallback="detail:d-audit" aria-label="Подробнее: налоговый аудит и консультации">Подробнее <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</article>
+<article class="vpx-card vpx-svc vpx-rise" id="svc-disputes">
+<div class="vpx-svc__ic"><svg class="vpx-ic"><use href="#vpxi-shield"/></svg></div>
+<h3>Налоговые требования, проверки и споры</h3>
+<p>Готовим ответы на требования ФНС, сопровождаем проверки, анализируем акты и решения, готовим возражения и апелляционные жалобы, работаем с доказательственной базой.</p>
+<p class="vpx-price">Ответ на требование — от&nbsp;10&nbsp;000&nbsp;₽<br>Возражения — от&nbsp;30&nbsp;000&nbsp;₽</p>
+<a class="vpx-link" href="#d-disputes" data-vpx-link="serviceDisputes" data-vpx-fallback="detail:d-disputes" aria-label="Подробнее: налоговые требования, проверки и споры">Подробнее <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</article>
+<article class="vpx-card vpx-svc vpx-rise" id="svc-1c">
+<div class="vpx-svc__ic"><svg class="vpx-ic"><use href="#vpxi-db"/></svg></div>
+<h3>Аудит базы 1С</h3>
+<p>Проверяем документы, остатки, взаиморасчёты, регистры и логику отражения операций. Сопоставляем данные 1С с документами и платежами, выявляем ошибки и расхождения.</p>
+<p class="vpx-price">Экспресс-проверка — от&nbsp;15&nbsp;000&nbsp;₽<br>Полная проверка — от&nbsp;30&nbsp;000&nbsp;₽</p>
+<a class="vpx-link" href="#d-1c" data-vpx-link="service1c" data-vpx-fallback="detail:d-1c" aria-label="Подробнее: аудит базы 1С">Подробнее <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</article>
+<aside class="vpx-quote vpx-more vpx-rise" id="svc-more" aria-labelledby="vpx-more-h">
+<p class="vpx-hand vpx-more__hand" aria-hidden="true">От цифры —<br>до документа</p>
+<h3 id="vpx-more-h">Также делаем</h3>
+<ul>
+<li><a href="#d-recovery">Восстановление учёта</a></li>
+<li><a href="#d-hr">Кадровый учёт</a></li>
+<li><a href="#d-registration">Регистрация и изменения в бизнесе</a></li>
+<li><a href="#d-industries">Отраслевые решения</a></li>
+</ul>
+<a class="vpx-link" href="#d-services" data-vpx-link="allServices" data-vpx-fallback="detail:d-services">Все услуги <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</aside>
+</div>
+</div>
+</section>
+<section class="vpx-sec vpx-robot" id="robot" aria-labelledby="vpx-robot-h">
+<div class="vpx-wrap vpx-robot__grid">
+<div class="vpx-robot__copy vpx-rise">
+<p class="vpx-eyebrow">Собственная технология</p>
+<h2 class="vpx-robot__title" id="vpx-robot-h">ВПЛЮСЕ <span>РОБОТ</span></h2>
+<p class="vpx-robot__text">Облачная система контроля бухгалтерского учёта и баз 1С. Автоматизирует бухгалтерские проверки, помогает находить ошибки и риски и выдаёт понятный результат бухгалтеру и собственнику.</p>
+<p class="vpx-robot__quote">Мы переносим повторяющийся бухгалтерский контроль в технологию, но не заменяем профессиональное суждение.</p>
+<a class="vpx-btn vpx-btn--primary" href="https://robot.vpluse.pro/" data-vpx-link="robot">Подробнее о ВПЛЮСЕ РОБОТ <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</div>
+<figure class="vpx-robot__visual vpx-rise">
+<div class="vpx-device vpx-device--robot" data-vpx-device data-w="1140" data-h="793" data-quad="248,148 897,148 904,554 240,555" data-sw="640" data-sh="400">
+<picture class="vpx-device__img">
+<img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/robot-laptop.webp" width="1140" height="793" alt="Интерфейс облачной системы ВПЛЮСЕ РОБОТ для контроля бухгалтерского учёта и баз 1С" loading="lazy" decoding="async">
+</picture>
+<div class="vpx-device__stage" aria-hidden="true">
+<div class="vpx-screen">
+<div class="vpx-r">
+<div class="vpx-r__side">
+<div class="vpx-r__brand"><i><svg class="vpx-ic"><use href="#vpxi-cpu"/></svg></i><div>ВПЛЮСЕ<span>РОБОТ</span></div></div>
+<div class="vpx-s__item is-on"><svg class="vpx-ic"><use href="#vpxi-home"/></svg>Главная</div>
+<div class="vpx-s__item"><svg class="vpx-ic"><use href="#vpxi-bars"/></svg>Показатели</div>
+<div class="vpx-s__item"><svg class="vpx-ic"><use href="#vpxi-doc"/></svg>Документы</div>
+<div class="vpx-s__item"><svg class="vpx-ic"><use href="#vpxi-calc"/></svg>Налоги</div>
+<div class="vpx-s__item"><svg class="vpx-ic"><use href="#vpxi-gear"/></svg>Настройки</div>
+</div>
+<div class="vpx-r__main">
+<div class="vpx-r__hello">Доброе утро!<small>Ваш учёт под контролем</small></div>
+<div class="vpx-r__tiles">
+<div class="vpx-r__tile"><svg class="vpx-ic"><use href="#vpxi-doc-check"/></svg><span>Проверка документов</span><b>выполнена</b></div>
+<div class="vpx-r__tile is-warn"><svg class="vpx-ic"><use href="#vpxi-alert"/></svg><span>Выявленные риски</span><b>требуют внимания</b></div>
+<div class="vpx-r__tile"><svg class="vpx-ic"><use href="#vpxi-spark"/></svg><span>Рекомендации</span><b>готовы</b></div>
+</div>
+<div class="vpx-r__chart">
+<div class="vpx-r__chart-h">Динамика показателей<em>За 6 месяцев</em></div>
+<div class="vpx-r__bars"><i style="height:28%;animation-delay:.2s"></i><i style="height:40%;animation-delay:.3s"></i><i style="height:52%;animation-delay:.4s"></i><i style="height:60%;animation-delay:.5s"></i><i style="height:78%;animation-delay:.6s"></i><i style="height:66%;animation-delay:.7s"></i><i style="height:88%;animation-delay:.8s"></i></div>
+</div>
+</div>
+</div>
+<div class="vpx-scan"></div>
+</div>
+</div>
+</div>
+<figcaption class="vpx-robot__caption">Интерфейс показан схематично</figcaption>
+</figure>
+<div class="vpx-rise">
+<ul class="vpx-robot__features" aria-label="Возможности ВПЛЮСЕ РОБОТ">
+<li><svg class="vpx-ic"><use href="#vpxi-cloud"/></svg>Облачная система контроля учёта и баз 1С</li>
+<li><svg class="vpx-ic"><use href="#vpxi-alert"/></svg>Помогает находить ошибки и риски</li>
+<li><svg class="vpx-ic"><use href="#vpxi-doc-check"/></svg>Автоматизирует бухгалтерские проверки</li>
+<li><svg class="vpx-ic"><use href="#vpxi-spark"/></svg>Понятный результат бухгалтеру и собственнику</li>
+</ul>
+<p class="vpx-robot__note" aria-hidden="true">Проверки — РОБОТу.<br>Решения — специалистам</p>
+</div>
+</div>
+</section>
+<section class="vpx-sec" id="cases" aria-labelledby="vpx-cases-h">
+<div class="vpx-wrap">
+<div class="vpx-head vpx-rise">
+<div class="vpx-head__text">
+<h2 class="vpx-h2" id="vpx-cases-h">Практика, которую можно показать в цифрах</h2>
+</div>
+</div>
+<div class="vpx-cases">
+<article class="vpx-card vpx-case vpx-rise" id="case-1">
+<p class="vpx-case__cat">Налоговый спор</p>
+<p class="vpx-case__num" data-vpx-count><span>136 млн ₽</span><span class="vpx-arr">→</span><span>8 млн ₽</span></p>
+<p>Снижение доначислений после выездной налоговой проверки в завершённом деле.</p>
+<a class="vpx-link" href="#d-case-1" data-vpx-link="case1" data-vpx-fallback="detail:d-case-1" aria-label="Смотреть кейс: налоговый спор, 136 млн ₽ → 8 млн ₽">Смотреть кейс <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+<span class="vpx-case__ic" aria-hidden="true"><svg class="vpx-ic"><use href="#vpxi-trend-down"/></svg></span>
+</article>
+<article class="vpx-card vpx-case vpx-rise" id="case-2">
+<p class="vpx-case__cat">Выездная налоговая проверка</p>
+<p class="vpx-case__num" data-vpx-count>≈ 50 млн ₽</p>
+<p>На эту сумму уменьшены налоги и снижены штрафы на стадии рассмотрения материалов проверки.</p>
+<a class="vpx-link" href="#d-case-2" data-vpx-link="case2" data-vpx-fallback="detail:d-case-2" aria-label="Смотреть кейс: около 50 млн ₽ по итогам выездной проверки">Смотреть кейс <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+<span class="vpx-case__ic" aria-hidden="true"><svg class="vpx-ic"><use href="#vpxi-scale"/></svg></span>
+</article>
+<article class="vpx-card vpx-case vpx-case--scale vpx-rise" id="case-3">
+<p class="vpx-case__cat">Комплексный анализ</p>
+<span class="vpx-scale-tag"><svg class="vpx-ic"><use href="#vpxi-db"/></svg>Масштаб анализируемой базы</span>
+<p class="vpx-case__num" data-vpx-count>≈ 300 млн ₽</p>
+<p>Масштаб данных и операций группы компаний, которые разбирались в рамках комплексного анализа учёта.</p>
+<a class="vpx-link" href="#d-case-3" data-vpx-link="case3" data-vpx-fallback="detail:d-case-3" aria-label="Смотреть кейс: комплексный анализ, масштаб около 300 млн ₽">Смотреть кейс <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+<span class="vpx-case__ic" aria-hidden="true"><svg class="vpx-ic"><use href="#vpxi-db"/></svg></span>
+</article>
+<article class="vpx-card vpx-case vpx-rise" id="case-4">
+<p class="vpx-case__cat">Восстановление учёта</p>
+<p class="vpx-case__num">30+ компаний</p>
+<p>Восстановили учёт с нуля после ухода бухгалтера — в том числе там, где не было даже базы 1С, — и взяли на дальнейшее ведение.</p>
+<a class="vpx-link" href="#d-case-4" data-vpx-link="case4" data-vpx-fallback="detail:d-case-4" aria-label="Смотреть кейс: восстановление учёта более 30 компаний">Смотреть кейс <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+<span class="vpx-case__ic" aria-hidden="true"><svg class="vpx-ic"><use href="#vpxi-layers"/></svg></span>
+</article>
+<aside class="vpx-quote vpx-rise" aria-label="Важно">
+<p class="vpx-hand" aria-hidden="true">За каждой цифрой —<br>конкретное дело</p>
+<p class="vpx-disclaimer">Результаты относятся к конкретным проектам и не являются гарантией аналогичного результата в других ситуациях.</p>
+</aside>
+</div>
+</div>
+</section>
+<section class="vpx-sec vpx-sec--soft" id="reviews" aria-labelledby="vpx-rev-h">
+<div class="vpx-wrap">
+<div class="vpx-head vpx-rise">
+<div class="vpx-head__text">
+<p class="vpx-eyebrow">Отзывы клиентов</p>
+<h2 class="vpx-h2" id="vpx-rev-h">Что говорят компании, с которыми мы работаем</h2>
+<p class="vpx-lead">Благодарственные письма клиентов с подписью и печатью — нажмите «Письмо», чтобы открыть скан.</p>
+</div>
+</div>
+<div class="vpx-reviews">
+<article class="vpx-card vpx-review vpx-rise">
+<svg class="vpx-review__q" viewBox="0 0 40 32" aria-hidden="true"><path d="M0 32V19C0 8 6 1.5 16 0l2 4.5C12 6.5 9.5 10 9.5 15H17v17H0zm23 0V19c0-11 6-17.5 16-19l1 4.5c-6 2-8.5 5.5-8.5 10.5H40v17H23z"/></svg>
+<blockquote><p>Вот уже три года работаем вместе, и за это время наша компания уже выросла до оборотов более 100 млн рублей в год. Юлия Николаевна помогает на всех этапах развития компании, забирает всю бумажную волокиту на себя, общается с налоговыми, фондами, если возникают вопросы.</p></blockquote>
+<div class="vpx-review__foot">
+<div><p class="vpx-review__name">ООО «ЮТОП»</p><p class="vpx-review__who">Генеральный директор Трушкина О.С. · Строительство и электромонтажные работы</p></div>
+<a class="vpx-review__doc" href="#d-review-1" aria-label="Открыть письмо ООО «ЮТОП»"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/reviews/review-utop-th.webp" alt="" width="380" height="236" loading="lazy"><span>Письмо</span></a>
+</div>
+</article>
+<article class="vpx-card vpx-review vpx-rise">
+<svg class="vpx-review__q" viewBox="0 0 40 32" aria-hidden="true"><path d="M0 32V19C0 8 6 1.5 16 0l2 4.5C12 6.5 9.5 10 9.5 15H17v17H0zm23 0V19c0-11 6-17.5 16-19l1 4.5c-6 2-8.5 5.5-8.5 10.5H40v17H23z"/></svg>
+<blockquote><p>Нам нужно было как восстановить бухгалтерский учёт за несколько месяцев, так и вести бухгалтерию в дальнейшем. Юлия Николаевна разобрала все накопившиеся документы, ввела их в базу, навела порядок в учёте и продолжает это делать.</p></blockquote>
+<div class="vpx-review__foot">
+<div><p class="vpx-review__name">ТД «СтальСтройЭкспресс»</p><p class="vpx-review__who">Генеральный директор Ковалёв А.Г. · Балашиха</p></div>
+<a class="vpx-review__doc" href="#d-review-2" aria-label="Открыть письмо ТД «СтальСтройЭкспресс»"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/reviews/review-stalstroy-th.webp" alt="" width="380" height="236" loading="lazy"><span>Письмо</span></a>
+</div>
+</article>
+<article class="vpx-card vpx-review vpx-rise">
+<svg class="vpx-review__q" viewBox="0 0 40 32" aria-hidden="true"><path d="M0 32V19C0 8 6 1.5 16 0l2 4.5C12 6.5 9.5 10 9.5 15H17v17H0zm23 0V19c0-11 6-17.5 16-19l1 4.5c-6 2-8.5 5.5-8.5 10.5H40v17H23z"/></svg>
+<blockquote><p>Для нас было приятным бонусом, что регистрация ООО была бесплатной при заключении договора на бухгалтерское обслуживание. Обороты нашей новой компании в течение нескольких месяцев значительно выросли, и было здорово, что нам удалось договориться о фиксации цены на период стремительного роста компании.</p></blockquote>
+<div class="vpx-review__foot">
+<div><p class="vpx-review__name">ООО «Холодные системы»</p><p class="vpx-review__who">Генеральный директор · Мытищи</p></div>
+<a class="vpx-review__doc" href="#d-review-3" aria-label="Открыть письмо ООО «Холодные системы»"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/reviews/review-coldsystem-th.webp" alt="" width="380" height="236" loading="lazy"><span>Письмо</span></a>
+</div>
+</article>
+<article class="vpx-card vpx-review vpx-rise">
+<svg class="vpx-review__q" viewBox="0 0 40 32" aria-hidden="true"><path d="M0 32V19C0 8 6 1.5 16 0l2 4.5C12 6.5 9.5 10 9.5 15H17v17H0zm23 0V19c0-11 6-17.5 16-19l1 4.5c-6 2-8.5 5.5-8.5 10.5H40v17H23z"/></svg>
+<blockquote><p>На первой консультации Юлия Николаевна подробно рассказала, какой процесс регистрации, помогла подобрать подходящую систему налогообложения, коды ОКВЭД и зарегистрировала ИП за один визит.</p></blockquote>
+<div class="vpx-review__foot">
+<div><p class="vpx-review__name">ИП Кузьмина И.С.</p><p class="vpx-review__who">Кузьмина И.С. · Индивидуальный предприниматель</p></div>
+<a class="vpx-review__doc" href="#d-review-4" aria-label="Открыть письмо ИП Кузьмина И.С."><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/reviews/review-kuzmina-th.webp" alt="" width="380" height="236" loading="lazy"><span>Письмо</span></a>
+</div>
+</article>
+</div>
+<div class="vpx-partners vpx-rise" aria-labelledby="vpx-partners-h">
+<p class="vpx-partners__h" id="vpx-partners-h">Банки и сервисы, с которыми мы работаем</p>
+<ul>
+<li>Сбербанк</li><li>Альфа-Банк</li><li>Точка</li><li>Т-Банк</li><li>Контур</li><li>СБИС</li><li>1С</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="vpx-sec vpx-about" id="about" aria-labelledby="vpx-about-h">
+<div class="vpx-wrap vpx-approach">
+<div class="vpx-approach__head vpx-rise">
+<p class="vpx-eyebrow">О компании · почему ВПЛЮСЕ</p>
+<h2 class="vpx-h2" id="vpx-about-h">Контроль — это не один отчёт перед сдачей декларации</h2>
+</div>
+<ul class="vpx-points vpx-rise">
+<li class="vpx-point"><span class="vpx-point__ic"><svg class="vpx-ic"><use href="#vpxi-search"/></svg></span><p>Не принимаем цифру без понимания её происхождения.</p></li>
+<li class="vpx-point"><span class="vpx-point__ic"><svg class="vpx-ic"><use href="#vpxi-briefcase"/></svg></span><p>Проверяем бухгалтерию через экономический смысл операции.</p></li>
+<li class="vpx-point"><span class="vpx-point__ic"><svg class="vpx-ic"><use href="#vpxi-layers"/></svg></span><p>Сопоставляем документы, платежи и данные 1С.</p></li>
+<li class="vpx-point"><span class="vpx-point__ic"><svg class="vpx-ic"><use href="#vpxi-split"/></svg></span><p>Отделяем техническое расхождение от реального риска.</p></li>
+<li class="vpx-point"><span class="vpx-point__ic"><svg class="vpx-ic"><use href="#vpxi-scale"/></svg></span><p>В налоговом споре проверяем не только компанию, но и расчёт ФНС.</p></li>
+<li class="vpx-point"><span class="vpx-point__ic"><svg class="vpx-ic"><use href="#vpxi-gear"/></svg></span><p>Переводим повторяющийся контроль в технологию.</p></li>
+</ul>
+<figure class="vpx-brandphoto vpx-rise">
+<div class="vpx-device vpx-device--plate" data-vpx-device data-w="1810" data-h="869" data-quad="868,321 1526,290 1524,487 870,495" data-sw="1000" data-sh="282">
+<picture class="vpx-device__img">
+<img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/about-office.webp" width="1810" height="869" alt="Офис ВПЛЮСЕ в Мытищах: стеклянная табличка с логотипом компании" loading="lazy" decoding="async">
+</picture>
+<div class="vpx-device__stage" aria-hidden="true">
+<div class="vpx-screen vpx-screen--plate"><img class="vpx-limg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1000" height="282" alt=""></div>
+</div>
+</div>
+</figure>
+<p class="vpx-ribbon vpx-rise">Бухгалтерский аутсорсинг · налоговая экспертиза · контроль учёта · собственная технология<svg class="vpx-swoosh" viewBox="0 0 120 14" aria-hidden="true"><path d="M3 10C30 2 80 1 117 6"/></svg></p>
+</div>
+</section>
+<section class="vpx-sec" id="industries" aria-labelledby="vpx-ind-h">
+<div class="vpx-wrap">
+<div class="vpx-head vpx-rise">
+<div class="vpx-head__text">
+<p class="vpx-eyebrow">Отраслевая экспертиза</p>
+<h2 class="vpx-h2" id="vpx-ind-h">Знаем, как устроен учёт в разных бизнес-моделях</h2>
+</div>
+<a class="vpx-link" href="#d-industries" data-vpx-link="industries" data-vpx-fallback="detail:d-industries">Что мы делаем в каждой отрасли <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</div>
+<div class="vpx-indcards"><article class="vpx-card vpx-indc vpx-rise"><div class="vpx-indc__top"><i><svg class="vpx-ic"><use href="#vpxi-truck"/></svg></i><h3>Грузоперевозки и транспорт</h3></div><p class="vpx-indc__badge">Опыт основателя: собственный транспортный бизнес 2012–2021</p><ul><li>Путевые листы, ТТН и ЭТрН, учёт рейсов</li><li>ГСМ и топливные карты, автопарк, лизинг, «Платон»</li><li>НДС 0% при международных перевозках, проверка перевозчиков</li></ul><a class="vpx-link" href="/blog-buhgalteriya-gruzoperevozki">Учёт в отрасли подробно <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></article><article class="vpx-card vpx-indc vpx-rise"><div class="vpx-indc__top"><i><svg class="vpx-ic"><use href="#vpxi-building"/></svg></i><h3>Строительство</h3></div><p class="vpx-indc__badge">Опыт основателя: собственный бизнес в электромонтаже 2019–2022</p><ul><li>Раздельный учёт по объектам, акты КС-2 и КС-3</li><li>Субподряд, давальческие материалы, гарантийные удержания</li><li>НДС с авансов, проверка субподрядчиков, бригады</li></ul><a class="vpx-link" href="/blog-buhgalteriya-stroitelstvo">Учёт в отрасли подробно <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></article><article class="vpx-card vpx-indc vpx-rise"><div class="vpx-indc__top"><i><svg class="vpx-ic"><use href="#vpxi-factory"/></svg></i><h3>Производство</h3></div><ul><li>Калькуляция себестоимости в 1С</li><li>Нормы расхода, НЗП, прямые и косвенные расходы</li><li>Оборудование, брак, сверка склада и учёта</li></ul><a class="vpx-link" href="/blog-buhgalteriya-proizvodstvo">Учёт в отрасли подробно <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></article><article class="vpx-card vpx-indc vpx-rise"><div class="vpx-indc__top"><i><svg class="vpx-ic"><use href="#vpxi-boxes"/></svg></i><h3>Оптовая торговля</h3></div><ul><li>Товарные запасы, партии, инвентаризации</li><li>Бонусы и скидки поставщиков, вычеты НДС</li><li>Маркировка, дебиторка, импорт и ВЭД</li></ul><a class="vpx-link" href="/blog-buhgalteriya-optovaya-torgovlya">Учёт в отрасли подробно <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></article><article class="vpx-card vpx-indc vpx-rise"><div class="vpx-indc__top"><i><svg class="vpx-ic"><use href="#vpxi-cart"/></svg></i><h3>Маркетплейсы</h3></div><ul><li>Доход по отчётам площадок, а не по поступлениям</li><li>Комиссии, логистика, возвраты, штрафы площадок</li><li>Порог НДС 20 млн ₽ и выбор ставки 5% или 22%</li></ul><a class="vpx-link" href="/blog-nalogi-marketplace">Учёт в отрасли подробно <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></article><article class="vpx-card vpx-indc vpx-rise"><div class="vpx-indc__top"><i><svg class="vpx-ic"><use href="#vpxi-briefcase"/></svg></i><h3>Сфера услуг</h3></div><ul><li>Выбор режима: УСН, АУСН, патент — по расчёту</li><li>Самозанятые и ГПХ без риска переквалификации</li><li>Онлайн-кассы и чеки при оплате по СБП</li></ul><a class="vpx-link" href="/blog-buhgalteriya-sfera-uslug">Учёт в отрасли подробно <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></article></div>
+</div>
+</section>
+<section class="vpx-sec vpx-sec--soft" id="materials" aria-labelledby="vpx-mat-h">
+<div class="vpx-wrap">
+<div class="vpx-head vpx-rise">
+<div class="vpx-head__text">
+<p class="vpx-eyebrow">Блог и экспертные материалы</p>
+<h2 class="vpx-h2" id="vpx-mat-h">Разбираем бухгалтерию и налоги без общих слов</h2>
+<p class="vpx-sub">Практические статьи о требованиях ФНС, налоговых проверках, АУСН, налоге на прибыль и учёте в 1С — с нормами НК РФ, сроками и примерами из практики.</p>
+</div>
+<a class="vpx-link" href="/blog">Все статьи блога <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</div>
+<nav class="vpx-rubrics vpx-rise" aria-label="Рубрики блога"><p class="vpx-rubrics__h">Рубрики блога</p><ul><li><a class="vpx-rubric" href="/blog-proverki">Проверки и требования ФНС <span>3</span></a></li><li><a class="vpx-rubric" href="/blog-nalogi">Налоги и режимы <span>6</span></a></li><li><a class="vpx-rubric" href="/blog-uchet">Учёт, 1С и стоимость <span>3</span></a></li><li><a class="vpx-rubric" href="/blog-otrasli">Отрасли <span>7</span></a></li></ul></nav>
+<div class="vpx-blog">
+<article class="vpx-card vpx-bpost vpx-bpost--big vpx-rise" data-tag="Проверки и требования ФНС">
+<a class="vpx-bpost__thumb vpx-bpost__thumb--img" href="/blog-trebovanie-fns" tabindex="-1" aria-hidden="true"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/blog/blog-trebovanie-fns-600.webp" alt="" width="600" height="315" loading="lazy" decoding="async"></a>
+<div class="vpx-bpost__body">
+<div class="vpx-post__meta"><span class="vpx-chip">Требования ФНС</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 7 мин</span></div>
+<h3><a href="/blog-trebovanie-fns">Пришло требование из налоговой: что делать и в какие сроки отвечать</a></h3>
+<p>Что делать, если пришло требование из налоговой: срок квитанции о приёме, пояснения за 5 дней, документы за 10 дней, штрафы и блокировка счёта. Разбор от бухгалтеров ВПЛЮСЕ.</p>
+<p class="vpx-bpost__in">В статье:</p><ul class="vpx-bpost__toc"><li><a href="/blog-trebovanie-fns#kvitanciya">Шаг 1. Отправьте квитанцию о приёме — 6 рабочих дней</a></li><li><a href="/blog-trebovanie-fns#vid">Шаг 2. Определите, что именно запрашивают</a></li><li><a href="/blog-trebovanie-fns#sroki">Шаг 3. Сроки ответа</a></li><li><a href="/blog-trebovanie-fns#otvet">Шаг 4. Как подготовить ответ</a></li><li><a href="/blog-trebovanie-fns#shtrafy">Что будет, если не ответить</a></li><li><a href="/blog-trebovanie-fns#kogda">Когда стоит подключить специалиста</a></li></ul>
+<a class="vpx-link" href="/blog-trebovanie-fns">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</div>
+</article>
+<div class="vpx-blog__list">
+<article class="vpx-card vpx-bpost vpx-bpost--compact vpx-rise" data-tag="Отрасли">
+<div class="vpx-bpost__body">
+<div class="vpx-post__meta"><span class="vpx-chip">ЭТрН</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 7 мин</span></div>
+<h3><a href="/blog-etrn-2026">Электронная транспортная накладная с 1 сентября 2026: кому обязательна и где теряют вычеты</a></h3>
+<p>С 1 сентября 2026 года электронная транспортная накладная стала обязательной для коммерческих перевозок. Это касается…</p>
+<a class="vpx-link" href="/blog-etrn-2026">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</div>
+</article>
+<article class="vpx-card vpx-bpost vpx-bpost--compact vpx-rise" data-tag="Налоги и режимы">
+<div class="vpx-bpost__body">
+<div class="vpx-post__meta"><span class="vpx-chip">НДС на УСН</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 7 мин</span></div>
+<h3><a href="/blog-nds-usn-5-ili-22">НДС на упрощёнке: какая ставка выгоднее — 5% или 22%</a></h3>
+<p>С 2025 года упрощёнка перестала означать «без НДС». Если доход выше порога освобождения, придётся выбирать: пониженная…</p>
+<a class="vpx-link" href="/blog-nds-usn-5-ili-22">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</div>
+</article>
+<article class="vpx-card vpx-bpost vpx-bpost--compact vpx-rise" data-tag="Учёт, 1С и стоимость">
+<div class="vpx-bpost__body">
+<div class="vpx-post__meta"><span class="vpx-chip">Восстановление учёта</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 7 мин</span></div>
+<h3><a href="/blog-vosstanovlenie-ucheta">Бухгалтер пропал: как восстановить бухгалтерский учёт, даже если нет базы</a></h3>
+<p>Бухгалтер перестал отвечать, отчётность не сдана, доступа к базе нет — с таким запросом к нам пришли более 30 компаний…</p>
+<a class="vpx-link" href="/blog-vosstanovlenie-ucheta">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</div>
+</article>
+<article class="vpx-card vpx-bpost vpx-bpost--compact vpx-rise" data-tag="Налоги и режимы">
+<div class="vpx-bpost__body">
+<div class="vpx-post__meta"><span class="vpx-chip">Патент</span><span class="vpx-post__date"><time datetime="2026-10-10">10 октября 2026</time> · 6 мин</span></div>
+<h3><a href="/blog-patent-limit-2026">Патент в 2026–2027 годах: лимит 20 и 15 млн ₽ и как не потерять право задним числом</a></h3>
+<p>Патент долго был самым простым режимом для ИП: фиксированная стоимость и лимит дохода 60 млн ₽. С 2026 года лимит резко…</p>
+<a class="vpx-link" href="/blog-patent-limit-2026">Читать статью <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</div>
+</article>
+</div>
+</div>
+<h3 class="vpx-blog__subh vpx-rise">Видео, публикации и канал</h3>
+<div class="vpx-posts vpx-posts--mini">
+<article class="vpx-card vpx-post vpx-rise">
+<div class="vpx-post__body">
+<div class="vpx-post__meta"><span class="vpx-chip"><svg class="vpx-ic"><use href="#vpxi-play"/></svg>Вебинар</span><time class="vpx-post__date" datetime="2026-02-02">2 февраля 2026</time></div>
+<h3>Налог на прибыль: подготовка годовой декларации</h3>
+<p>Вебинар 42Clouds с участием Юлии Плосконос, основателя ВПЛЮСЕ.</p>
+<a class="vpx-link" href="https://rutube.ru/video/f166681bcbcd0a0deb0aaadc3f5ec149/" data-vpx-link="webinar">Смотреть на Rutube <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</div>
+</article>
+<article class="vpx-card vpx-post vpx-rise">
+<div class="vpx-post__body">
+<div class="vpx-post__meta"><span class="vpx-chip"><svg class="vpx-ic"><use href="#vpxi-tc"/></svg>TenChat</span><time class="vpx-post__date" datetime="2026-02-06">6 февраля 2026</time></div>
+<h3>АУСН: не включил и забыл — где чаще всего ловят сюрпризы</h3>
+<p>Публикация в TenChat об автоматизированной упрощённой системе налогообложения.</p>
+<a class="vpx-link" href="https://tenchat.ru/media/4766203-ausn--ne-vklyuchil-i-zabyl-vot-gde-chasche-vsego-lovyat-syurprizy" data-vpx-link="articleAusn">Читать в TenChat <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</div>
+</article>
+<article class="vpx-card vpx-post vpx-rise">
+<div class="vpx-post__body">
+<div class="vpx-post__meta"><span class="vpx-chip"><svg class="vpx-ic"><use href="#vpxi-max"/></svg>Канал в MAX</span></div>
+<h3>Вплюсе — всё о налогах и бухгалтерии для бизнеса</h3>
+<p>Короткие разборы для ООО и ИП: ОСНО, УСН, патент, отраслевые особенности учёта.</p>
+<a class="vpx-link" href="https://max.ru/id362804736954_biz" data-vpx-link="maxChannel">Открыть канал <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</div>
+</article>
+</div>
+<ul class="vpx-platforms vpx-rise" aria-label="Площадки ВПЛЮСЕ">
+<li><a href="https://max.ru/id362804736954_biz" data-vpx-link="maxChannel"><svg class="vpx-ic"><use href="#vpxi-max"/></svg>Канал в MAX</a></li>
+<li><a href="https://vk.com/vpluse_proo" data-vpx-link="vk"><svg class="vpx-ic"><use href="#vpxi-vk"/></svg>ВКонтакте</a></li>
+<li><a href="https://tenchat.ru/ploskonos_pro" data-vpx-link="tenchat"><svg class="vpx-ic"><use href="#vpxi-tc"/></svg>TenChat</a></li>
+</ul>
+</div>
+</section>
+<section class="vpx-sec" id="founder" aria-labelledby="vpx-founder-h">
+<div class="vpx-wrap">
+<div class="vpx-founder vpx-rise">
+<div class="vpx-founder__main">
+<picture class="vpx-founder__photo">
+<img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/founder.webp" width="360" height="360" alt="Юлия Плосконос — основатель ВПЛЮСЕ, аудитор и налоговый консультант" loading="lazy" decoding="async">
+</picture>
+<div>
+<p class="vpx-eyebrow">Методологический фундамент</p>
+<h2 class="vpx-h2" id="vpx-founder-h">Методология ВПЛЮСЕ строится на практике</h2>
+<p class="vpx-founder__text">Методология ВПЛЮСЕ строится на профессиональной бухгалтерской и налоговой практике основателя компании Юлии Плосконос — с опытом в профессии с 2005 года, квалификацией аудитора, аттестатом налогового консультанта и практическим опытом ведения собственного бизнеса.</p>
+</div>
+</div>
+<div>
+<ul class="vpx-creds">
+<li><svg class="vpx-ic"><use href="#vpxi-award"/></svg>Аттестат аудитора Минфина РФ</li>
+<li><svg class="vpx-ic"><use href="#vpxi-award"/></svg>Аттестат ИПБ России — аудитор</li>
+<li><svg class="vpx-ic"><use href="#vpxi-award"/></svg>Аттестат налогового консультанта</li>
+</ul>
+<a class="vpx-link vpx-founder__cta" href="#d-founder" data-vpx-link="founder" data-vpx-fallback="detail:d-founder">Подробнее об основателе и методологии <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a>
+</div>
+</div>
+</div>
+</section>
+<section class="vpx-sec vpx-sec--soft" id="start" aria-labelledby="vpx-start-h">
+<div class="vpx-wrap">
+<div class="vpx-head vpx-rise">
+<div class="vpx-head__text">
+<p class="vpx-eyebrow">Как начинается работа</p>
+<h2 class="vpx-h2" id="vpx-start-h">Сначала разбираемся в задаче, потом называем стоимость</h2>
+</div>
+</div>
+<ol class="vpx-steps vpx-rise">
+<li><b>1</b><h3>Созвон</h3><p>Обсуждаем задачу и оцениваем масштаб проблемы.</p></li>
+<li><b>2</b><h3>Предварительная оценка</h3><p>Называем ориентир по стоимости и составу работ.</p></li>
+<li><b>3</b><h3>Документы</h3><p>Определяем, какие документы и данные нужны, и собираем их.</p></li>
+<li><b>4</b><h3>Начало работы</h3><p>Приступаем к работе в согласованном объёме.</p></li>
+</ol>
+<p class="vpx-steps__note vpx-rise"><svg class="vpx-ic"><use href="#vpxi-clock"/></svg>Если вопрос срочный, обсуждаем, что можно сделать в первую очередь и как быстро начать.</p>
+</div>
+</section>
+<section class="vpx-sec" id="faq" aria-labelledby="vpx-faq-h">
+<div class="vpx-wrap vpx-faq">
+<div class="vpx-head__text vpx-rise">
+<p class="vpx-eyebrow">Частые вопросы</p>
+<h2 class="vpx-h2" id="vpx-faq-h">Отвечаем до первого звонка</h2>
+</div>
+<div class="vpx-faq__list vpx-rise">
+<details class="vpx-qa"><summary>С чего начинается работа?</summary><div><p>С созвона: обсуждаем задачу, оцениваем объём проблемы и предварительную стоимость. Затем собираем необходимые документы и приступаем к работе.</p></div></details>
+<details class="vpx-qa"><summary>Работаете ли вы с небольшими ООО и ИП?</summary><div><p>Да. Ограничений по минимальному обороту и размеру бизнеса нет. Формат сопровождения подбираем после обсуждения задачи.</p></div></details>
+<details class="vpx-qa"><summary>Какие системы налогообложения вы сопровождаете?</summary><div><p>Работаем с ОСНО, УСН «доходы», УСН «доходы минус расходы» и патентом в применимых ситуациях.</p></div></details>
+<details class="vpx-qa"><summary>Сколько стоит бухгалтерское сопровождение?</summary><div><p>Ведение ИП — от&nbsp;5&nbsp;000&nbsp;₽ в месяц, ИП с сотрудниками и ООО — от&nbsp;10&nbsp;000&nbsp;₽ в месяц. Точную стоимость называем после обсуждения объёма операций и задач.</p></div></details>
+<details class="vpx-qa"><summary>Можно ли обратиться с одним налоговым вопросом?</summary><div><p>Да. Консультация без анализа документов стоит 5&nbsp;000&nbsp;₽, с анализом документов — 15&nbsp;000&nbsp;₽. Если нужен отдельный проект, обсуждаем его состав и стоимость.</p></div></details>
+<details class="vpx-qa"><summary>Пришло требование ФНС — что передать для оценки?</summary><div><p>Само требование, сведения о его получении и документы по запрошенным операциям. После первичного разбора определяем, какие дополнительные данные нужны. Ответ на одно требование — от&nbsp;10&nbsp;000&nbsp;₽.</p></div></details>
+<details class="vpx-qa"><summary>Можно ли начать срочно?</summary><div><p>В отдельных ситуациях можем начать срочную работу. На созвоне уточняем ближайший срок, доступность документов и приоритетную задачу.</p></div></details>
+<details class="vpx-qa"><summary>Что входит в налоговый аудит?</summary><div><p>Проверка согласованных участков налогового учёта, первичных документов, расчётов, регистров и деклараций. Состав проверки зависит от задачи. Стоимость — от&nbsp;40&nbsp;000&nbsp;₽.</p></div></details>
+<details class="vpx-qa"><summary>Чем проверка базы 1С отличается от налогового аудита?</summary><div><p>Проверка 1С сосредоточена на документах, остатках, взаиморасчётах, регистрах и логике отражения операций в базе. Налоговый аудит оценивает корректность налогового учёта и связанные риски. При необходимости работы объединяются.</p></div></details>
+<details class="vpx-qa"><summary>Можно ли заказать кадровый учёт отдельно?</summary><div><p>Нет, кадровый учёт мы ведём только вместе с бухгалтерским сопровождением.</p></div></details>
+<details class="vpx-qa"><summary>Работаете ли вы с клиентами из других регионов?</summary><div><p>Да, работаем дистанционно с клиентами по всей России. Офис — в Мытищах, рядом с Москвой.</p></div></details>
+</div>
+</div>
+</section>
+<section class="vpx-formsec" id="contact" aria-labelledby="vpx-form-h">
+<div class="vpx-wrap">
+<div class="vpx-form-wrap vpx-rise">
+<div class="vpx-form-intro">
+<span class="vpx-form-intro__ic" aria-hidden="true"><svg class="vpx-ic"><use href="#vpxi-send"/></svg></span>
+<h2 class="vpx-h2" id="vpx-form-h">Расскажите, что нужно решить</h2>
+<p class="vpx-lead">Коротко опишите задачу — мы свяжемся и предложим следующий шаг.</p>
+<div class="vpx-contacts">
+<a href="tel:+79773391203"><svg class="vpx-ic"><use href="#vpxi-phone"/></svg>8 (977) 339-12-03</a>
+<a href="tel:+79939000405"><svg class="vpx-ic"><use href="#vpxi-phone"/></svg>8 (993) 900-04-05</a>
+<a href="mailto:ipploskonos@mail.ru"><svg class="vpx-ic"><use href="#vpxi-mail"/></svg>ipploskonos@mail.ru</a>
+<a href="https://max.ru/u/f9LHodD0cOJXxzWG144QE45wxOlygsudlw94ywq6AL1rII-v63MSTto3ao8" data-vpx-link="maxChat"><svg class="vpx-ic"><use href="#vpxi-max"/></svg>Написать в MAX</a>
+</div>
+</div>
+<form class="vpx-form" id="vpx-form" novalidate>
+<div class="vpx-field">
+<input class="vpx-input" id="vpx-name" name="name" type="text" autocomplete="name" required maxlength="80" placeholder="Как к вам обращаться" aria-describedby="vpx-name-err">
+<label for="vpx-name">Имя <span class="vpx-req" aria-hidden="true">*</span></label>
+<span class="vpx-err" id="vpx-name-err" aria-live="polite"></span>
+</div>
+<div class="vpx-field">
+<input class="vpx-input" id="vpx-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+7 (___) ___-__-__" aria-describedby="vpx-phone-err">
+<label for="vpx-phone">Телефон <span class="vpx-req" aria-hidden="true">*</span></label>
+<span class="vpx-err" id="vpx-phone-err" aria-live="polite"></span>
+</div>
+<div class="vpx-field">
+<input class="vpx-input" id="vpx-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="120" placeholder="name@company.ru" aria-describedby="vpx-email-err">
+<label for="vpx-email">Email <small>— необязательно</small></label>
+<span class="vpx-err" id="vpx-email-err" aria-live="polite"></span>
+</div>
+<div class="vpx-field vpx-select">
+<select class="vpx-input" id="vpx-service" name="service" required aria-describedby="vpx-service-err">
+<option value="">Выберите услугу</option>
+<option>Бухгалтерский аутсорсинг</option>
+<option>Налоговый аудит и консультации</option>
+<option>Консультация по налоговому вопросу</option>
+<option>Налоговые требования, проверки и споры</option>
+<option>Аудит базы 1С</option>
+<option>Восстановление учёта</option>
+<option>Кадровый учёт</option>
+<option>Регистрация и изменения в бизнесе</option>
+<option>Отраслевые решения</option>
+<option>Другое</option>
+</select>
+<label for="vpx-service">Услуга <span class="vpx-req" aria-hidden="true">*</span></label>
+<svg class="vpx-ic"><use href="#vpxi-chevron"/></svg>
+<span class="vpx-err" id="vpx-service-err" aria-live="polite"></span>
+</div>
+<div class="vpx-field">
+<textarea class="vpx-input" id="vpx-comment" name="comment" rows="1" maxlength="2000" placeholder="Например: пришло требование ФНС по НДС, нужен ответ"></textarea>
+<label for="vpx-comment">Комментарий</label>
+</div>
+<div class="vpx-field">
+<button class="vpx-btn vpx-btn--primary" type="submit" id="vpx-submit">Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></button>
+</div>
+<div class="vpx-hp" aria-hidden="true"><label for="vpx-website">Не заполняйте это поле</label><input id="vpx-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+<label class="vpx-consent" id="vpx-consent-box">
+<input type="checkbox" id="vpx-consent" name="consent" required aria-describedby="vpx-consent-err">
+<span>Даю согласие на обработку персональных данных. <a href="https://vpluse.pro/privacy" data-vpx-link="consent" data-vpx-fallback="privacy">Текст согласия</a> <span aria-hidden="true">*</span></span>
+</label>
+<span class="vpx-err vpx-field--full" id="vpx-consent-err" aria-live="polite"></span>
+<div class="vpx-status" id="vpx-status" role="status" aria-live="polite" hidden></div>
+</form>
+</div>
+</div>
+</section>
+</main>
+<footer class="vpx-footer" id="contacts">
+<div class="vpx-wrap">
+<div class="vpx-footer__grid">
+<div class="vpx-footer__brand">
+<img class="vpx-limg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1000" height="282" alt="ВПЛЮСЕ — бухгалтерские услуги" loading="lazy">
+<p>ВПЛЮСЕ — бухгалтерский аутсорсинг, налоговая экспертиза, контроль учёта и собственная технология. Офис в Мытищах, работаем с клиентами из Москвы и всей России.</p>
+<a class="vpx-robotlink" href="https://robot.vpluse.pro/" data-vpx-link="robot"><svg class="vpx-ic"><use href="#vpxi-cpu"/></svg>ВПЛЮСЕ РОБОТ</a>
+<div class="vpx-social">
+<a href="https://max.ru/id362804736954_biz" data-vpx-link="maxChannel" aria-label="Канал ВПЛЮСЕ в MAX"><svg class="vpx-ic"><use href="#vpxi-max"/></svg></a>
+<a href="https://vk.com/vpluse_proo" data-vpx-link="vk" aria-label="ВПЛЮСЕ ВКонтакте"><svg class="vpx-ic"><use href="#vpxi-vk"/></svg></a>
+<a href="https://tenchat.ru/ploskonos_pro" data-vpx-link="tenchat" aria-label="Юлия Плосконос в TenChat"><svg class="vpx-ic"><use href="#vpxi-tc"/></svg></a>
+</div>
+</div>
+<nav aria-labelledby="vpx-f-svc">
+<h2 id="vpx-f-svc">Услуги</h2>
+<ul>
+<li><a href="#d-outsourcing" data-vpx-link="serviceOutsourcing" data-vpx-fallback="detail:d-outsourcing">Бухгалтерский аутсорсинг</a></li>
+<li><a href="#d-audit" data-vpx-link="serviceAudit" data-vpx-fallback="detail:d-audit">Налоговый аудит и консультации</a></li>
+<li><a href="#d-disputes" data-vpx-link="serviceDisputes" data-vpx-fallback="detail:d-disputes">Требования, проверки и споры</a></li>
+<li><a href="#d-1c" data-vpx-link="service1c" data-vpx-fallback="detail:d-1c">Аудит базы 1С</a></li>
+<li><a href="#d-services" data-vpx-link="allServices" data-vpx-fallback="detail:d-services">Все услуги и цены</a></li>
+</ul>
+</nav>
+<nav aria-labelledby="vpx-f-co">
+<h2 id="vpx-f-co">Компания</h2>
+<ul>
+<li><a href="#about">О компании</a></li>
+<li><a href="#cases">Кейсы</a></li>
+<li><a href="#reviews">Отзывы клиентов</a></li>
+<li><a href="/blog">Блог</a></li>
+<li><a href="#d-founder" data-vpx-link="founder" data-vpx-fallback="detail:d-founder">Основатель / методология</a></li>
+<li><a href="#faq">Частые вопросы</a></li>
+</ul>
+</nav>
+<div>
+<h2>Контакты</h2>
+<ul class="vpx-contacts">
+<li><a href="tel:+79773391203"><svg class="vpx-ic"><use href="#vpxi-phone"/></svg>8 (977) 339-12-03</a></li>
+<li><a href="tel:+79939000405"><svg class="vpx-ic"><use href="#vpxi-phone"/></svg>8 (993) 900-04-05</a></li>
+<li><a href="mailto:ipploskonos@mail.ru"><svg class="vpx-ic"><use href="#vpxi-mail"/></svg>ipploskonos@mail.ru</a></li>
+<li><a href="https://max.ru/u/f9LHodD0cOJXxzWG144QE45wxOlygsudlw94ywq6AL1rII-v63MSTto3ao8" data-vpx-link="maxChat"><svg class="vpx-ic"><use href="#vpxi-max"/></svg>MAX: 8 (993) 900-04-05</a></li>
+<li><span><svg class="vpx-ic"><use href="#vpxi-pin"/></svg>г. Мытищи, ул.&nbsp;Борисовка, д.&nbsp;8</span></li>
+</ul>
+</div>
+<nav aria-labelledby="vpx-f-doc">
+<h2 id="vpx-f-doc">Документы</h2>
+<ul>
+<li><a href="https://vpluse.pro/privacy" data-vpx-link="privacy">Политика конфиденциальности</a></li>
+<li><a href="https://vpluse.pro/privacy" data-vpx-link="consent" data-vpx-fallback="privacy">Согласие на обработку ПДн</a></li>
+<li><a href="#d-requisites">Реквизиты</a></li>
+<li><span class="vpx-soon" data-vpx-link="cookies" data-vpx-fallback="soon-or-hide" data-vpx-label="Настройки cookies">Настройки cookies <b>скоро</b></span></li>
+</ul>
+</nav>
+</div>
+<div class="vpx-footer__bottom">
+<span>© <span data-vpx-year>2026</span> ВПЛЮСЕ. Бухгалтерские услуги в Москве и Мытищах.</span>
+<span>ИП Плосконос Юлия Николаевна · ИНН 362804736954 · ОГРНИП 310501802500024</span>
+</div>
+</div>
+</footer>
+<div class="vpx-modal" id="vpx-modal" aria-hidden="true">
+<div class="vpx-modal__panel" role="dialog" aria-modal="true" aria-labelledby="vpx-modal-title" tabindex="-1">
+<button class="vpx-modal__close" type="button" id="vpx-modal-close" aria-label="Закрыть"><svg class="vpx-ic"><use href="#vpxi-close"/></svg></button>
+<article class="vpx-detail" id="d-outsourcing" data-service="Бухгалтерский аутсорсинг" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-doc"/></svg></span><div><p class="vpx-eyebrow">Ключевое направление</p><h2>Бухгалтерский аутсорсинг для ООО и ИП</h2></div></div>
+<p class="vpx-detail__lead">Командное бухгалтерское сопровождение ООО и ИП на ОСНО, УСН и патенте. Ведём бухгалтерский, налоговый и кадровый учёт. Работаем с первичными документами, банковскими операциями, расчётами с контрагентами, регистрами и декларациями. Используем ЭДО и организуем сопровождение командой бухгалтеров.</p>
+<div class="vpx-pricebox">
+<div><small>ИП</small><b>от&nbsp;5&nbsp;000&nbsp;₽</b><span>в месяц</span></div>
+<div><small>ИП с сотрудниками</small><b>от&nbsp;10&nbsp;000&nbsp;₽</b><span>в месяц</span></div>
+<div><small>ООО</small><b>от&nbsp;10&nbsp;000&nbsp;₽</b><span>в месяц</span></div>
+</div>
+<p class="vpx-detail__note">Точная стоимость зависит от объёма операций и задач и согласуется после обсуждения.</p>
+<h3>В работу входят по согласованному объёму</h3>
+<ul class="vpx-ticks">
+<li>Бухгалтерский учёт</li>
+<li>Налоговый учёт</li>
+<li>Кадровый учёт в составе сопровождения</li>
+<li>Обработка первичных документов</li>
+<li>Банковские операции</li>
+<li>Взаиморасчёты с контрагентами</li>
+<li>Бухгалтерские и налоговые регистры</li>
+<li>Подготовка деклараций и отчётности</li>
+<li>Электронный документооборот (ЭДО)</li>
+<li>Командная организация сопровождения</li>
+</ul>
+<h3>Для кого</h3>
+<p class="vpx-lead">ООО и ИП без ограничений по минимальному обороту. Наши ниши: грузоперевозки и транспорт, строительство, производство, оптовая торговля, маркетплейсы, сфера услуг.</p>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a><a class="vpx-link" href="#d-services">Все услуги и цены <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-audit" data-service="Налоговый аудит и консультации" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-bars"/></svg></span><div><p class="vpx-eyebrow">Ключевое направление</p><h2>Налоговый аудит и консультации</h2></div></div>
+<p class="vpx-detail__lead">Проверяем бухгалтерскую и налоговую базу, НДС, налог на прибыль, первичные документы и регистры. Консультируем по налоговым вопросам, разбираем конкретные операции и выявляем риски.</p>
+<div class="vpx-pricebox">
+<div><small>Консультация без анализа документов</small><b>5&nbsp;000&nbsp;₽</b></div>
+<div><small>Консультация с анализом документов</small><b>15&nbsp;000&nbsp;₽</b></div>
+<div><small>Налоговый аудит</small><b>от&nbsp;40&nbsp;000&nbsp;₽</b></div>
+</div>
+<p class="vpx-detail__note">Состав, период и глубину аудита определяем после оценки задачи. Срок называем после получения задачи и документов.</p>
+<h3>Что проверяем</h3>
+<ul class="vpx-ticks">
+<li>Бухгалтерскую и налоговую базу</li>
+<li>НДС и налог на прибыль</li>
+<li>Первичные документы</li>
+<li>Сопоставление банковских операций и учёта</li>
+<li>Взаиморасчёты</li>
+<li>Налоговые регистры и декларации</li>
+<li>Выявление рисков</li>
+<li>Восстановление логики операций</li>
+<li>Доказательная база</li>
+<li>Консультации по конкретным вопросам</li>
+</ul>
+<h3>Результат</h3>
+<p class="vpx-lead">Выводы по согласованным участкам, выявленные расхождения и рекомендации.</p>
+<h3>Практика</h3>
+<div class="vpx-related"><div><small>Комплексный анализ</small><b>≈ 300 млн ₽</b><span>Масштаб анализируемых данных и операций группы компаний — не экономия.</span></div></div>
+<p class="vpx-detail__note">Результаты относятся к конкретным проектам и не являются гарантией аналогичного результата в других ситуациях.</p>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a><a class="vpx-link" href="#d-case-3">Смотреть кейс <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-disputes" data-service="Налоговые требования, проверки и споры" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-shield"/></svg></span><div><p class="vpx-eyebrow">Ключевое направление</p><h2>Налоговые требования, проверки и споры с ФНС</h2></div></div>
+<p class="vpx-detail__lead">Готовим ответы на требования ФНС, пояснения и подтверждающие документы. Сопровождаем налоговые проверки, анализируем акты и решения, готовим возражения и апелляционные жалобы, работаем с доказательственной базой и налоговой реконструкцией.</p>
+<div class="vpx-pricebox">
+<div><small>Ответ на одно требование ФНС</small><b>от&nbsp;10&nbsp;000&nbsp;₽</b></div>
+<div><small>Возражения на акт проверки</small><b>от&nbsp;30&nbsp;000&nbsp;₽</b></div>
+<div><small>Сопровождение проверки или спора</small><b>индивидуально</b></div>
+</div>
+<p class="vpx-detail__note">Объём документов и сложность оцениваем отдельно. Срок ответа определяем по конкретному требованию и дате его получения.</p>
+<h3>Что делаем</h3>
+<ul class="vpx-ticks">
+<li>Разбор требования и запрошенных операций</li>
+<li>Подготовка ответов</li>
+<li>Пояснения и подтверждающие документы</li>
+<li>Анализ актов и решений ФНС</li>
+<li>Сопровождение камеральных и выездных проверок</li>
+<li>Возражения</li>
+<li>Апелляционные жалобы</li>
+<li>Первичка, регистры, декларации, книги покупок и продаж</li>
+<li>Материальный баланс и цепочки поставок</li>
+<li>Реконструкция налоговых обязательств</li>
+</ul>
+<h3>Практика</h3>
+<div class="vpx-related">
+<div><small>Налоговый спор</small><b>136 млн ₽ → 8 млн ₽</b><span>Снижение доначислений после выездной проверки в завершённом деле.</span></div>
+<div><small>Выездная налоговая проверка</small><b>≈ 50 млн ₽</b><span>Уменьшение налогов и снижение штрафов на стадии рассмотрения материалов.</span></div>
+</div>
+<p class="vpx-detail__note">Результаты относятся к конкретным проектам и не являются гарантией аналогичного результата в других ситуациях.</p>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a><a class="vpx-link" href="#d-case-1">Смотреть кейсы <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-1c" data-service="Аудит базы 1С" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-db"/></svg></span><div><p class="vpx-eyebrow">Ключевое направление</p><h2>Аудит бухгалтерской базы 1С</h2></div></div>
+<p class="vpx-detail__lead">Проверяем документы, остатки, взаиморасчёты, регистры и логику отражения операций в бухгалтерской базе. Сопоставляем данные 1С с документами и платежами, выявляем ошибки и расхождения.</p>
+<h3>Варианты проверки</h3>
+<div class="vpx-tiers">
+<div class="vpx-tier"><small>Экспресс-проверка</small><b>от&nbsp;15&nbsp;000&nbsp;₽</b><p>Одна компания, период до&nbsp;12 месяцев. Ключевые участки: банк, взаиморасчёты, остатки по счетам, НДС. Список найденных ошибок и расхождений.</p></div>
+<div class="vpx-tier is-main"><small>Полная проверка</small><b>от&nbsp;30&nbsp;000&nbsp;₽</b><p>Логика учёта, документы и операции, остатки, взаиморасчёты, регистры, бухгалтерский и налоговый учёт, ОСВ и карточки счетов, сверка с документами и платежами. Отчёт с расхождениями и рекомендациями.</p></div>
+<div class="vpx-tier"><small>Комплексная проверка с планом исправлений</small><b>от&nbsp;70&nbsp;000&nbsp;₽</b><p>Несколько компаний или периодов. Оценка налоговых рисков, перечень недостающих документов, план исправлений с приоритетами.</p></div>
+</div>
+<p class="vpx-detail__note">Точная стоимость и срок определяются после оценки базы и задачи. Исправление учёта в стоимость проверки не входит и согласуется отдельно. Это бухгалтерская проверка, а не технический аудит конфигурации или производительности 1С.</p>
+<h3>Технология</h3>
+<p class="vpx-lead">ВПЛЮСЕ РОБОТ — облачная система контроля бухгалтерского учёта и баз 1С. Автоматизирует бухгалтерские проверки, помогает находить ошибки и риски.</p>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a><a class="vpx-link" href="https://robot.vpluse.pro/" data-vpx-link="robot">Подробнее о ВПЛЮСЕ РОБОТ <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-services" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-layers"/></svg></span><div><p class="vpx-eyebrow">Услуги ВПЛЮСЕ</p><h2>Все услуги и цены</h2></div></div>
+<div class="vpx-pricelist">
+<a href="#d-outsourcing"><span>Бухгалтерский аутсорсинг: ИП</span><b>от&nbsp;5&nbsp;000&nbsp;₽/мес</b></a>
+<a href="#d-outsourcing"><span>Бухгалтерский аутсорсинг: ИП с сотрудниками, ООО</span><b>от&nbsp;10&nbsp;000&nbsp;₽/мес</b></a>
+<a href="#d-audit"><span>Консультация без анализа документов</span><b>5&nbsp;000&nbsp;₽</b></a>
+<a href="#d-audit"><span>Консультация с анализом документов</span><b>15&nbsp;000&nbsp;₽</b></a>
+<a href="#d-audit"><span>Налоговый аудит</span><b>от&nbsp;40&nbsp;000&nbsp;₽</b></a>
+<a href="#d-disputes"><span>Ответ на требование ФНС</span><b>от&nbsp;10&nbsp;000&nbsp;₽</b></a>
+<a href="#d-disputes"><span>Возражения на акт проверки</span><b>от&nbsp;30&nbsp;000&nbsp;₽</b></a>
+<a href="#d-disputes"><span>Сопровождение проверки или спора</span><b>индивидуально</b></a>
+<a href="#d-1c"><span>Экспресс-проверка базы 1С</span><b>от&nbsp;15&nbsp;000&nbsp;₽</b></a>
+<a href="#d-1c"><span>Полная проверка базы 1С</span><b>от&nbsp;30&nbsp;000&nbsp;₽</b></a>
+<a href="#d-1c"><span>Комплексная проверка 1С с планом исправлений</span><b>от&nbsp;70&nbsp;000&nbsp;₽</b></a>
+<a href="#d-recovery"><span>Восстановление учёта</span><b>после оценки</b></a>
+<a href="#d-hr"><span>Кадровый учёт</span><b>в составе сопровождения</b></a>
+<a href="#d-registration"><span>Регистрация и изменения в бизнесе</span><b>после оценки</b></a>
+<a href="#d-industries"><span>Отраслевые решения</span><b>после оценки</b></a>
+</div>
+<p class="vpx-detail__note">Цены указаны «от» — точная стоимость зависит от объёма и согласуется после обсуждения задачи.</p>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-recovery" data-service="Восстановление учёта" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-doc-check"/></svg></span><div><p class="vpx-eyebrow">Услуга</p><h2>Восстановление бухгалтерского учёта</h2></div></div>
+<p class="vpx-detail__lead">Восстанавливаем логику учёта по первичным документам, платежам и данным бухгалтерской базы. Определяем расхождения и необходимые корректировки.</p>
+<p class="vpx-detail__note">Состав и сроки зависят от состояния документов и проверяемого периода — определяем их после оценки.</p>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a><a class="vpx-link" href="#d-services">Все услуги и цены <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-hr" data-service="Кадровый учёт" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-users"/></svg></span><div><p class="vpx-eyebrow">Услуга</p><h2>Кадровый учёт</h2></div></div>
+<p class="vpx-detail__lead">Ведём кадровый учёт в составе бухгалтерского сопровождения. Отдельно от бухгалтерского обслуживания эту услугу не оказываем.</p>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a><a class="vpx-link" href="#d-outsourcing">О бухгалтерском сопровождении <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-registration" data-service="Регистрация и изменения в бизнесе" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-building"/></svg></span><div><p class="vpx-eyebrow">Услуга</p><h2>Регистрация и изменения в бизнесе</h2></div></div>
+<p class="vpx-detail__lead">Готовим документы для регистрации ООО и ИП, внесения изменений в ЕГРЮЛ и ЕГРИП, смены адреса, руководителя и кодов деятельности. Подготавливаем документы по купле-продаже долей, ликвидации нулевых компаний и упрощённой ликвидации.</p>
+<ul class="vpx-ticks">
+<li>Регистрация ООО и ИП</li>
+<li>Изменения в ЕГРЮЛ и ЕГРИП</li>
+<li>Смена адреса, руководителя, кодов ОКВЭД</li>
+<li>Документы по купле-продаже долей</li>
+<li>Ликвидация нулевых компаний</li>
+<li>Упрощённая ликвидация</li>
+</ul>
+<p class="vpx-detail__note">Нотариальные действия выполняет нотариус. Вопросы подтверждения ОКВЭД уточняем по конкретной задаче.</p>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a><a class="vpx-link" href="#d-services">Все услуги и цены <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-case-1" data-service="Налоговые требования, проверки и споры" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-trend-down"/></svg></span><div><p class="vpx-eyebrow">Кейс · Налоговый спор</p><h2>136 млн ₽ → 8 млн ₽</h2></div></div>
+<p class="vpx-detail__lead">После выездной налоговой проверки компания столкнулась с претензиями к реальности поставок и обоснованности расходов и вычетов НДС.</p>
+<h3>Что сделали</h3>
+<p class="vpx-lead">Разбирали объёмы и движение материалов, документы поставок и расчёты, сопоставляли их с выводами инспекции и готовили аргументированную позицию для обжалования.</p>
+<h3>Результат</h3>
+<p class="vpx-lead">Завершённое дело: доначисления снижены со 136 млн ₽ до&nbsp;8 млн ₽.</p>
+<p class="vpx-detail__note">Результаты относятся к конкретным проектам и не являются гарантией аналогичного результата в других ситуациях.</p>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a><a class="vpx-link" href="#d-disputes">О направлении <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-case-2" data-service="Налоговые требования, проверки и споры" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-scale"/></svg></span><div><p class="vpx-eyebrow">Кейс · Выездная налоговая проверка</p><h2>≈ 50 млн ₽ — уменьшение налогов и штрафов</h2></div></div>
+<p class="vpx-detail__lead">По итогам выездной налоговой проверки компании предъявили доначисления по НДС и налогу на прибыль.</p>
+<h3>Что сделали</h3>
+<p class="vpx-lead">Проанализировали расчёты и документы, подготовили возражения, дополнительные доказательства и ходатайство о смягчении ответственности.</p>
+<h3>Результат</h3>
+<p class="vpx-lead">На стадии рассмотрения материалов проверки сумма налогов уменьшена, а штрафы снижены вдвое. Совокупный результат — около 50 млн ₽ (налоги и штрафы). Работа по оставшимся начислениям продолжается.</p>
+<p class="vpx-detail__note">Результаты относятся к конкретным проектам и не являются гарантией аналогичного результата в других ситуациях.</p>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a><a class="vpx-link" href="#d-disputes">О направлении <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-case-3" data-service="Налоговый аудит и консультации" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-db"/></svg></span><div><p class="vpx-eyebrow">Кейс · Комплексный анализ</p><h2>≈ 300 млн ₽ — масштаб анализируемой базы</h2></div></div>
+<p class="vpx-detail__lead">Провели анализ бухгалтерского и налогового учёта группы компаний за год. Около 300 млн ₽ — это масштаб анализируемых данных и операций, а не сумма экономии.</p>
+<h3>Что сделали</h3>
+<ul class="vpx-ticks">
+<li>Сопоставили данные 1С, налоговые регистры, декларации и бухгалтерскую отчётность</li>
+<li>Проверили документы по выбранным операциям</li>
+<li>Подрядные расходы и себестоимость</li>
+<li>Внутригрупповые расчёты</li>
+<li>УСН и НДС</li>
+<li>Зарплата, подотчёт, транспорт и активы</li>
+</ul>
+<h3>Результат</h3>
+<p class="vpx-lead">Подробный отчёт: выявленные расхождения, оценка рисков по участникам и группе, перечень необходимых документов и план исправлений с приоритетами.</p>
+<p class="vpx-detail__note">Результаты относятся к конкретным проектам и не являются гарантией аналогичного результата в других ситуациях.</p>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a><a class="vpx-link" href="#d-audit">О налоговом аудите <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-case-4" data-service="Восстановление учёта" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-layers"/></svg></span><div><p class="vpx-eyebrow">Кейс · Восстановление учёта</p><h2>Более 30 компаний: восстановили учёт с нуля и ведём дальше</h2></div></div>
+<p class="vpx-detail__lead">Типичная ситуация: бухгалтер перестал выходить на связь, отчётность не сдана, доступа к базе нет — а иногда базы не было вовсе. Мы принимали такие компании, восстанавливали учёт с нуля, ставили его заново и брали на постоянное сопровождение. Таких проектов — более 30.</p>
+<h3>Что делаем</h3>
+<ul class="vpx-ticks">
+<li>Собираем данные: банковские выписки, данные ФНС и онлайн-касс, документы от контрагентов</li>
+<li>Создаём или восстанавливаем базу 1С и разносим операции</li>
+<li>Сверяемся с бюджетом, контрагентами и банком</li>
+<li>Готовим и сдаём пропущенную отчётность, уточняем ошибочную</li>
+<li>Отвечаем на требования ФНС, которые накопились за время без бухгалтера</li>
+<li>Ставим учёт так, чтобы ситуация не повторилась, и берём его на ведение</li>
+</ul>
+<h3>Результат</h3>
+<p class="vpx-lead">Учёт, отчётность и расчёты с бюджетом приведены в порядок, собственник снова понимает свои цифры, а бизнес продолжает работу с постоянным бухгалтерским сопровождением.</p>
+<p class="vpx-detail__note">Результаты относятся к конкретным проектам и не являются гарантией аналогичного результата в других ситуациях.</p>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a><a class="vpx-link" href="/blog-vosstanovlenie-ucheta">Статья о восстановлении учёта <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-review-1" data-service="Бухгалтерский аутсорсинг" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-doc-check"/></svg></span><div><p class="vpx-eyebrow">Отзыв клиента · 26 сентября 2022</p><h2>ООО «ЮТОП»</h2></div></div>
+<div class="vpx-revpanel">
+<div class="vpx-revpanel__text"><p class="vpx-detail__lead">«Вот уже три года работаем вместе, и за это время наша компания уже выросла до оборотов более 100 млн рублей в год. Юлия Николаевна помогает на всех этапах развития компании, забирает всю бумажную волокиту на себя, общается с налоговыми, фондами, если возникают вопросы.»</p><p>Так как наша основная деятельность строительство и электромонтажные работы, то нам очень важен управленческий учёт, учёт доходов и расходов по проектам. Очень важно планирование платежей.</p><p>Для решения этих вопросов Юлия Николаевна ввела такие инструменты, как отчёт о движении денежных средств, платёжный календарь, попроектный учёт.</p><p>В этом году наша компания также стала активно участвовать в тендерах, и тут мы также получили помощь. Юлия Николаевна помогает готовить документы для участия в тендерах, для получения кредитов и займов, помогает с закрытием объектов на порталах.</p><p class="vpx-review__who">Генеральный директор Трушкина О.С.</p></div>
+<figure class="vpx-revpanel__scan"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/reviews/review-utop.webp" alt="Отзыв ООО «ЮТОП» о работе с ВПЛЮСЕ — скан письма" width="760" height="1060" loading="lazy"><figcaption>Скан письма</figcaption></figure>
+</div>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-review-2" data-service="Восстановление учёта" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-doc-check"/></svg></span><div><p class="vpx-eyebrow">Отзыв клиента</p><h2>ТД «СтальСтройЭкспресс»</h2></div></div>
+<div class="vpx-revpanel">
+<div class="vpx-revpanel__text"><p class="vpx-detail__lead">«Нам нужно было как восстановить бухгалтерский учёт за несколько месяцев, так и вести бухгалтерию в дальнейшем. Юлия Николаевна разобрала все накопившиеся документы, ввела их в базу, навела порядок в учёте и продолжает это делать.»</p><p>Всегда до последнего дня ждёт от нас документы, чтобы максимально снизить наши налоги, а также при необходимости запрашивает у поставщиков сама.</p><p>Мы очень довольны бухгалтерским обслуживанием и очень советуем такого бухгалтера!</p><p class="vpx-review__who">Генеральный директор Ковалёв А.Г.</p></div>
+<figure class="vpx-revpanel__scan"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/reviews/review-stalstroy.webp" alt="Отзыв ТД «СтальСтройЭкспресс» о работе с ВПЛЮСЕ — скан письма" width="760" height="1060" loading="lazy"><figcaption>Скан письма</figcaption></figure>
+</div>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-review-3" data-service="Регистрация и изменения в бизнесе" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-doc-check"/></svg></span><div><p class="vpx-eyebrow">Отзыв клиента</p><h2>ООО «Холодные системы»</h2></div></div>
+<div class="vpx-revpanel">
+<div class="vpx-revpanel__text"><p class="vpx-detail__lead">«Для нас было приятным бонусом, что регистрация ООО была бесплатной при заключении договора на бухгалтерское обслуживание. Обороты нашей новой компании в течение нескольких месяцев значительно выросли, и было здорово, что нам удалось договориться о фиксации цены на период стремительного роста компании.»</p><p>Также очень здорово, что не пришлось нести дополнительные траты на обслуживание базы 1С и подключение к сервису 1С-Отчётность. Они уже заложены в стоимость услуг.</p><p class="vpx-review__who">Генеральный директор</p></div>
+<figure class="vpx-revpanel__scan"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/reviews/review-coldsystem.webp" alt="Отзыв ООО «Холодные системы» о работе с ВПЛЮСЕ — скан письма" width="760" height="1060" loading="lazy"><figcaption>Скан письма</figcaption></figure>
+</div>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-review-4" data-service="Бухгалтерский аутсорсинг" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-doc-check"/></svg></span><div><p class="vpx-eyebrow">Отзыв клиента</p><h2>ИП Кузьмина И.С.</h2></div></div>
+<div class="vpx-revpanel">
+<div class="vpx-revpanel__text"><p class="vpx-detail__lead">«На первой консультации Юлия Николаевна подробно рассказала, какой процесс регистрации, помогла подобрать подходящую систему налогообложения, коды ОКВЭД и зарегистрировала ИП за один визит.»</p><p>Также следит за тем, чтобы я не переплачивала налоги, всегда говорит, каких документов ещё не хватает в учёте, чтобы учесть все расходы ИП.</p><p>В работе мне всё нравится, всегда подробно консультирует по возникающим вопросам и оперативно готовит документы для заказчиков.</p><p class="vpx-review__who">Кузьмина И.С.</p></div>
+<figure class="vpx-revpanel__scan"><img src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/reviews/review-kuzmina.webp" alt="Отзыв ИП Кузьмина И.С. о работе с ВПЛЮСЕ — скан письма" width="760" height="1060" loading="lazy"><figcaption>Скан письма</figcaption></figure>
+</div>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-industries" data-service="Отраслевые решения" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-boxes"/></svg></span><div><p class="vpx-eyebrow">Отраслевая экспертиза</p><h2>Отраслевые решения: что мы делаем в каждой отрасли</h2></div></div>
+<p class="vpx-detail__lead">Базовый набор у всех клиентов одинаков: учёт, налоги, отчётность, зарплата. Но в каждой отрасли есть свои документы, расходы и налоговые риски — ниже то, что мы закрываем дополнительно. В грузоперевозках и электромонтаже у основателя ВПЛЮСЕ был собственный бизнес, поэтому эти отрасли мы знаем изнутри.</p>
+<section class="vpx-indp"><h3><svg class="vpx-ic"><use href="#vpxi-truck"/></svg>Грузоперевозки и транспорт</h3><p class="vpx-detail__note">Опыт основателя: собственный транспортный бизнес 2012–2021</p><ul class="vpx-ticks">
+<li>ведём учёт рейсов и выручки по договорам перевозки и транспортной экспедиции;</li>
+<li>контролируем путевые листы, транспортные накладные и электронные перевозочные документы (ЭТрН);</li>
+<li>настраиваем нормы и списание ГСМ, учёт топливных карт;</li>
+<li>учитываем автопарк: собственные ТС, лизинг, аренду, амортизацию, ремонты, шины и запчасти;</li>
+<li>считаем зарплату водителей, командировочные и суточные;</li>
+<li>рассчитываем транспортный налог и учитываем платежи в систему «Платон»;</li>
+<li>подтверждаем нулевую ставку НДС при международных перевозках;</li>
+<li>проверяем перевозчиков-подрядчиков, чтобы не потерять вычеты и расходы.</li>
+</ul><p><a class="vpx-link" href="/blog-buhgalteriya-gruzoperevozki">Статья: Бухгалтерия транспортной компании: путевые листы, ГСМ, НДС и налоговые риски <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></p></section><section class="vpx-indp"><h3><svg class="vpx-ic"><use href="#vpxi-building"/></svg>Строительство</h3><p class="vpx-detail__note">Опыт основателя: собственный бизнес в электромонтаже 2019–2022</p><ul class="vpx-ticks">
+<li>ведём раздельный учёт затрат и выручки по объектам и договорам;</li>
+<li>контролируем акты выполненных работ (КС-2, КС-3 или собственные формы) и их соответствие договорам и сметам;</li>
+<li>учитываем генподрядные и субподрядные договоры, генподрядные услуги;</li>
+<li>учитываем давальческие материалы и списание материалов на объекты;</li>
+<li>отражаем гарантийные удержания и расчёты с заказчиками;</li>
+<li>ведём НДС с авансов и вычеты при зачёте;</li>
+<li>проверяем субподрядчиков до заключения договора;</li>
+<li>оформляем бригады: трудовые договоры, ГПХ, самозанятые — с оценкой рисков переквалификации.</li>
+</ul><p><a class="vpx-link" href="/blog-buhgalteriya-stroitelstvo">Статья: Бухгалтерия строительной компании: учёт по объектам, КС-2, субподряд и НДС <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></p></section><section class="vpx-indp"><h3><svg class="vpx-ic"><use href="#vpxi-factory"/></svg>Производство</h3><ul class="vpx-ticks">
+<li>настраиваем калькуляцию себестоимости продукции в 1С;</li>
+<li>учитываем нормы расхода материалов и спецификации;</li>
+<li>оцениваем незавершённое производство и остатки полуфабрикатов;</li>
+<li>разделяем прямые и косвенные расходы для налогового учёта (ст. 318 НК РФ);</li>
+<li>распределяем общепроизводственные и общехозяйственные расходы;</li>
+<li>учитываем оборудование, амортизацию, ремонты и модернизацию;</li>
+<li>оформляем брак, отходы и инвентаризационные расхождения;</li>
+<li>сопоставляем данные склада, производства и бухгалтерии.</li>
+</ul><p><a class="vpx-link" href="/blog-buhgalteriya-proizvodstvo">Статья: Бухгалтерия производственной компании: себестоимость, нормы и прямые расходы <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></p></section><section class="vpx-indp"><h3><svg class="vpx-ic"><use href="#vpxi-boxes"/></svg>Оптовая торговля</h3><ul class="vpx-ticks">
+<li>ведём учёт товарных запасов, поступлений и отгрузок;</li>
+<li>сверяем остатки склада и бухгалтерии, проводим инвентаризации;</li>
+<li>отражаем скидки, ретро-бонусы и премии поставщиков;</li>
+<li>контролируем вычеты НДС и проверяем поставщиков, чтобы избежать «разрывов»;</li>
+<li>учитываем маркированные товары и работу с системой маркировки;</li>
+<li>оформляем недостачи и излишки при приёмке, возвраты;</li>
+<li>контролируем дебиторскую задолженность и акты сверки;</li>
+<li>ведём учёт импорта и ВЭД при необходимости.</li>
+</ul><p><a class="vpx-link" href="/blog-buhgalteriya-optovaya-torgovlya">Статья: Бухгалтерия оптовой компании: запасы, бонусы поставщиков, НДС и маркировка <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></p></section><section class="vpx-indp"><h3><svg class="vpx-ic"><use href="#vpxi-cart"/></svg>Маркетплейсы</h3><p>Ведём учёт продаж на маркетплейсах по отчётам площадок, сверяем удержания и возвраты, считаем налоги по УСН и НДС, помогаем выбрать режим и ставку НДС на реальных цифрах. Бухгалтерское обслуживание ИП — от 5 000 ₽/мес, ООО — от 10 000 ₽/мес.</p><p><a class="vpx-link" href="/blog-nalogi-marketplace">Статья: Налоги для селлеров маркетплейсов в 2026 году: УСН, НДС и частые ошибки <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></p></section><section class="vpx-indp"><h3><svg class="vpx-ic"><use href="#vpxi-briefcase"/></svg>Сфера услуг</h3><ul class="vpx-ticks">
+<li>подбираем режим налогообложения на реальных цифрах: УСН 6% или 15%, АУСН, патент;</li>
+<li>ведём учёт договоров, актов и авансов;</li>
+<li>оформляем работу с исполнителями: трудовые договоры, ГПХ, самозанятые;</li>
+<li>контролируем чеки самозанятых и риски переквалификации;</li>
+<li>настраиваем онлайн-кассу для оплат от физических лиц, в том числе по СБП;</li>
+<li>следим за порогом НДС на УСН и помогаем выбрать ставку;</li>
+<li>ведём кадровый учёт и зарплату.</li>
+</ul><p><a class="vpx-link" href="/blog-buhgalteriya-sfera-uslug">Статья: Бухгалтерия в сфере услуг: выбор режима, акты, самозанятые исполнители и кассы <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></p></section>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a><a class="vpx-link" href="/blog-otrasli">Все отраслевые статьи <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-founder" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-award"/></svg></span><div><p class="vpx-eyebrow">Методологический фундамент</p><h2>Основатель и методология ВПЛЮСЕ</h2></div></div>
+<p class="vpx-detail__lead">Методология ВПЛЮСЕ строится на профессиональной бухгалтерской и налоговой практике основателя компании Юлии Плосконос — с опытом в профессии с 2005 года, квалификацией аудитора, аттестатом налогового консультанта и практическим опытом ведения собственного бизнеса.</p>
+<h3>Квалификация</h3>
+<ul class="vpx-ticks vpx-ticks--one">
+<li>Аттестат аудитора Минфина РФ</li>
+<li>Аттестат ИПБ России — аудитор</li>
+<li>Аттестат налогового консультанта</li>
+</ul>
+<h3>Предпринимательский опыт</h3>
+<ul class="vpx-ticks vpx-ticks--one">
+<li>Грузоперевозки 2012–2021</li>
+<li>Электромонтаж 2019–2022</li>
+</ul>
+<h3>Публикации и выступления</h3>
+<ul class="vpx-ticks vpx-ticks--one">
+<li><a class="vpx-inline" href="https://rutube.ru/video/f166681bcbcd0a0deb0aaadc3f5ec149/" data-vpx-link="webinar">Вебинар 42Clouds «Налог на прибыль: подготовка годовой декларации»</a></li>
+<li><a class="vpx-inline" href="https://tenchat.ru/ploskonos_pro" data-vpx-link="tenchat">Профиль в TenChat</a></li>
+</ul>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-detail-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+<article class="vpx-detail" id="d-requisites" hidden>
+<div class="vpx-detail__head"><span class="vpx-detail__ic"><svg class="vpx-ic"><use href="#vpxi-id"/></svg></span><div><p class="vpx-eyebrow">Документы</p><h2>Реквизиты</h2></div></div>
+<dl class="vpx-reqs">
+<div><dt>Исполнитель</dt><dd>Индивидуальный предприниматель Плосконос Юлия Николаевна</dd></div>
+<div><dt>ИНН</dt><dd>362804736954</dd></div>
+<div><dt>ОГРНИП</dt><dd>310501802500024</dd></div>
+<div><dt>Адрес офиса</dt><dd>Московская область, г. Мытищи, ул.&nbsp;Борисовка, д.&nbsp;8</dd></div>
+<div><dt>Телефоны</dt><dd><a class="vpx-inline" href="tel:+79773391203">8 (977) 339-12-03</a>, <a class="vpx-inline" href="tel:+79939000405">8 (993) 900-04-05</a></dd></div>
+<div><dt>Email</dt><dd><a class="vpx-inline" href="mailto:ipploskonos@mail.ru">ipploskonos@mail.ru</a></dd></div>
+</dl>
+<div class="vpx-detail__foot"><a class="vpx-btn vpx-btn--primary" href="#contact" data-vpx-cta>Обсудить задачу <svg class="vpx-ic"><use href="#vpxi-arrow"/></svg></a></div>
+</article>
+</div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/vplusepro-art/vpluse-site@v1/assets/vpx.min.js"></script>
