@@ -1,0 +1,88 @@
+name: Preserve source after every update
+
+on:
+  push:
+    branches: ['**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Archive the exact committed source
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          SOURCE_REF: ${{ github.ref }}
+          SOURCE_REPOSITORY: ${{ github.repository }}
+          SNAPSHOT_RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          mkdir -p source-backup
+          git archive --format=tar.gz --prefix=source/ "$SOURCE_SHA" > source-backup/source.tar.gz
+          sha256sum source-backup/source.tar.gz > source-backup/SHA256SUMS
+          python - <<'PY'
+          import datetime, json, os, pathlib
+          manifest = {
+              "repository": os.environ["SOURCE_REPOSITORY"],
+              "ref": os.environ["SOURCE_REF"],
+              "commit": os.environ["SOURCE_SHA"],
+              "run_id": os.environ["SNAPSHOT_RUN_ID"],
+              "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              "scope": "Committed source only; excludes server data and uncommitted files",
+              "verification": "Snapshot preserved; production reports must be tested separately"
+          }
+          pathlib.Path("source-backup/manifest.json").write_text(
+              json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+      - name: Preserve the commit with a unique backup tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_SHA: ${{ github.sha }}
+          SOURCE_REPOSITORY: ${{ github.repository }}
+          SNAPSHOT_RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import datetime, json, os, urllib.error, urllib.request
+          repo = os.environ["SOURCE_REPOSITORY"]
+          sha = os.environ["SOURCE_SHA"]
+          day = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d")
+          ref = f"refs/tags/source-backup/{day}/{os.environ['SNAPSHOT_RUN_ID']}-{sha[:12]}"
+          headers = {
+              "Authorization": f"Bearer {os.environ['GH_TOKEN']}",
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28"
+          }
+          url = f"https://api.github.com/repos/{repo}/git/refs"
+          req = urllib.request.Request(url, data=json.dumps({"ref": ref, "sha": sha}).encode(),
+                                       headers=headers, method="POST")
+          try:
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  json.load(response)
+          except urllib.error.HTTPError as exc:
+              if exc.code != 422:
+                  raise
+              lookup = urllib.request.Request(
+                  f"https://api.github.com/repos/{repo}/git/ref/{ref.removeprefix('refs/')}",
+                  headers=headers)
+              with urllib.request.urlopen(lookup, timeout=30) as response:
+                  existing = json.load(response)
+              if existing["object"]["sha"] != sha:
+                  raise SystemExit("Backup tag exists for a different commit; refusing to replace it")
+          print(f"Preserved {sha} as {ref}")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: source-backup-${{ github.run_id }}-${{ github.sha }}
+          path: source-backup/
+          if-no-files-found: error
+          retention-days: 90
